@@ -61,7 +61,7 @@ public class Menu extends javax.swing.JFrame {
         jMenu3.setText("Consulta");
         jMenuBar1.add(jMenu3);
 
-        jMenu4.setText("EXIT");
+        jMenu4.setText("Salir");
         jMenuBar1.add(jMenu4);
 
         setJMenuBar(jMenuBar1);
