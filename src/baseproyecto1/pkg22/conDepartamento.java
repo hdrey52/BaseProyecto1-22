@@ -1,0 +1,280 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package baseproyecto1.pkg22;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
+/**
+ *
+ * @author Ramon Dominguez
+ */
+public class conDepartamento extends javax.swing.JFrame {
+
+    /**
+     * Creates new form conDepartamento
+     */
+    public conDepartamento() {
+        initComponents();
+        cargarDptos();
+    }
+    void enviardatosdpto(){
+        int fila=Departamentos.getSelectedRow();
+        if(fila>=0){
+            
+                   new Departamento(Departamentos.getValueAt(fila,0).toString()).setVisible(true);
+                   this.dispose();
+    }
+    else{
+        JOptionPane.showMessageDialog(null,"Por favor, seleccione una fila");
+    }
+        
+    }
+        public void Buscar(String filtro)
+        {
+            //TABLA
+           DefaultTableModel modelo = (DefaultTableModel) Departamentos.getModel();
+            modelo.getDataVector().clear();
+            
+            String []reg = new String [7];
+            //TABLA
+            
+            File fAntiguo= new File("departamentos.txt");
+            String aCadena=filtro;
+            // Declaro un nuevo buffer de lectura
+            BufferedReader br;
+            try
+                {
+                    if(fAntiguo.exists())
+                      {
+                        br = new BufferedReader(new FileReader(fAntiguo));
+
+                        String linea;
+
+                        while((linea=br.readLine()) != null)
+                          {                            
+                              String[] arrOfStr = linea.split(","); 
+                                
+                            if(arrOfStr[0].equals(aCadena))
+                               {                        
+                                   reg[0] = arrOfStr[0];
+                                   reg[1] = arrOfStr[1];
+                                   modelo.addRow(reg);
+                                  Departamentos.setModel(modelo);
+                                   br.close(); 
+                                    return;
+
+                               }
+                            
+                           } // fin while
+                        // Cierro el buffer de lectura
+                        br.close();
+                            modelo.addRow(reg);
+                                  Departamentos.setModel(modelo);
+                    }
+                    else
+                    {
+                        System.out.println("Fichero no Existe");
+                    }
+                } // fin try
+                catch(IOException e)
+                    {
+                        System.out.println(e);
+                    }
+        }
+        public void cargarDptos()
+        {
+            //TABLA
+           DefaultTableModel modelo = (DefaultTableModel) Departamentos.getModel();
+            modelo.getDataVector().clear();
+            
+            String []reg = new String [7];
+            //TABLA
+            
+            File fAntiguo= new File("departamentos.txt");
+            // Declaro un nuevo buffer de lectura
+            BufferedReader br;
+            try
+                {
+                    if(fAntiguo.exists())
+                      {
+                        br = new BufferedReader(new FileReader(fAntiguo));
+
+                        String linea;
+
+                        while((linea=br.readLine()) != null)
+                          {                            
+                              String[] arrOfStr = linea.split(","); 
+                                
+                                   reg[0] = arrOfStr[0];
+                                   reg[1] = arrOfStr[1];
+                                   modelo.addRow(reg);
+                                   Departamentos.setModel(modelo);
+                           } // fin while
+                        // Cierro el buffer de lectura
+                        br.close();
+                    }
+                    else
+                    {
+                        System.out.println("Fichero no Existe");
+                    }
+                } // fin try
+                catch(IOException e)
+                    {
+                        System.out.println(e);
+                    }
+        }                                            
+
+    private void idfiltroActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        // TODO add your handling code here:
+    }                                        
+
+
+    /**
+     * This method is called from within the constructor to initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is always
+     * regenerated by the Form Editor.
+     */
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+        jPanel1 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        idfiltro = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        Departamentos = new javax.swing.JTable();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Consulta de Departamentos", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 3, 14))); // NOI18N
+
+        jLabel2.setText("ID");
+
+        idfiltro.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                idfiltroKeyReleased(evt);
+            }
+        });
+
+        Departamentos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID", "Descripcion"
+            }
+        ));
+        Departamentos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                DepartamentosMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(Departamentos);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(idfiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(idfiltro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(1, 1, 1)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        pack();
+    }// </editor-fold>//GEN-END:initComponents
+
+    private void DepartamentosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DepartamentosMouseClicked
+        enviardatosdpto();
+    }//GEN-LAST:event_DepartamentosMouseClicked
+
+    private void idfiltroKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_idfiltroKeyReleased
+       Buscar(idfiltro.getText()); 
+        if(idfiltro.getText().isEmpty())
+            cargarDptos();
+    }//GEN-LAST:event_idfiltroKeyReleased
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(conDepartamento.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(conDepartamento.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(conDepartamento.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(conDepartamento.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new conDepartamento().setVisible(true);
+            }
+        });
+    }
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable Departamentos;
+    private javax.swing.JTextField idfiltro;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    // End of variables declaration//GEN-END:variables
+}
