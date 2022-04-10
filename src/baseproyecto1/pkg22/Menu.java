@@ -186,6 +186,11 @@ void limpiar(){
         mant_usuario.add(jMenuItem1);
 
         jMenuItem2.setText("Departamento");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
         mant_usuario.add(jMenuItem2);
 
         jMenuItem3.setText("Puesto");
@@ -293,6 +298,10 @@ void limpiar(){
            MenuBar.setVisible(false);
            Panel.setVisible(true);
     }//GEN-LAST:event_jMenuItem11ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+     new Departamento().setVisible(true);
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     /**
      * @param args the command line arguments
