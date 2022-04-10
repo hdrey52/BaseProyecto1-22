@@ -38,11 +38,14 @@ int entrada = 2;
             
             if(entrada == 0){
                     Empleado.iddpto.setText(Departamentos.getValueAt(fila,0).toString());
+                    
                    this.dispose();
+                   
             }
             else{
              new Departamento(Departamentos.getValueAt(fila,0).toString()).setVisible(true);
                    this.dispose();
+                   Departamento.btn_Guardar.setEnabled(false);
              }
             
                   /* new Departamento(Departamentos.getValueAt(fila,0).toString()).setVisible(true);

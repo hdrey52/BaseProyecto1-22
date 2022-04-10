@@ -287,13 +287,14 @@ archivos a = new archivos();
         JOptionPane.showMessageDialog(descripcion, "Departamento modificado!", "Información", 
          JOptionPane.INFORMATION_MESSAGE);       
         
-        
+        btn_Guardar.setEnabled(true);
         
     }//GEN-LAST:event_btn_modificarActionPerformed
 
     private void btn_NueviActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_NueviActionPerformed
     limpiar();
        id.setText(a.nextId("departamentos.txt")+"");
+       btn_Guardar.setEnabled(true);
     }//GEN-LAST:event_btn_NueviActionPerformed
 
     private void btn_borrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_borrarActionPerformed
@@ -311,7 +312,7 @@ archivos a = new archivos();
         JOptionPane.showMessageDialog(descripcion, "Departamento eliminado!", "Información", 
          JOptionPane.INFORMATION_MESSAGE);       
         
-        
+        btn_Guardar.setEnabled(true);
              
     }//GEN-LAST:event_btn_borrarActionPerformed
 
@@ -319,6 +320,7 @@ archivos a = new archivos();
 
         new conDepartamento().setVisible(true);
         this.dispose(); 
+        btn_Guardar.setEnabled(false);
     }//GEN-LAST:event_btn_consultaActionPerformed
 
     /**
@@ -357,7 +359,7 @@ archivos a = new archivos();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn_Guardar;
+    public static javax.swing.JButton btn_Guardar;
     private javax.swing.JButton btn_Nuevi;
     private javax.swing.JButton btn_borrar;
     private javax.swing.JButton btn_consulta;
