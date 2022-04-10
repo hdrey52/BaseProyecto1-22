@@ -17,13 +17,19 @@ import javax.swing.table.DefaultTableModel;
  * @author Ramon Dominguez
  */
 public class conDepartamento extends javax.swing.JFrame {
-
+int entrada = 2;
     /**
      * Creates new form conDepartamento
      */
     public conDepartamento() {
         initComponents();
+        
         cargarDptos();
+    }
+        public conDepartamento(int y){
+        initComponents(); 
+        cargarDptos(); 
+        entrada = y;
     }
     void enviardatosdpto(){
         int fila=Departamentos.getSelectedRow();
@@ -95,7 +101,7 @@ public class conDepartamento extends javax.swing.JFrame {
            DefaultTableModel modelo = (DefaultTableModel) Departamentos.getModel();
             modelo.getDataVector().clear();
             
-            String []reg = new String [7];
+            String []reg = new String [2];
             //TABLA
             
             File fAntiguo= new File("departamentos.txt");

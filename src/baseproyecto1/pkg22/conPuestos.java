@@ -17,13 +17,19 @@ import javax.swing.table.DefaultTableModel;
  * @author Ramon Dominguez
  */
 public class conPuestos extends javax.swing.JFrame {
-
+int entrada = 2;
     /**
      * Creates new form conPuestos
      */
     public conPuestos() {
         initComponents();
         cargarPtos();
+    }
+    
+     public conPuestos(int y){
+        initComponents(); 
+        cargarPtos(); 
+        entrada = y;
     }
 void enviardatospto(){
         int fila=Puestos.getSelectedRow();
