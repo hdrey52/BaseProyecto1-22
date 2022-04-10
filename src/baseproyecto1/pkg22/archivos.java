@@ -14,10 +14,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author Locky
- */
+
 public class archivos {
     
        public int nextId(String archivo)
@@ -169,7 +166,7 @@ public class archivos {
         {
            try
             {
-               // Comprovamos si el fichero existe  de ser así procedemos a borrar el archivo
+               // Comprobamos si el fichero existe  de ser así procedemos a borrar el archivo
                if(Ffichero.exists())
                  {
                     Ffichero.delete();
