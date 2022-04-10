@@ -5,32 +5,33 @@
  */
 package baseproyecto1.pkg22;
 
-import javax.swing.JOptionPane;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import javax.swing.JOptionPane;
 
-public class Departamento extends javax.swing.JFrame {
+/**
+ *
+ * @author Ramon Dominguez
+ */
+public class Puesto extends javax.swing.JFrame {
 archivos a = new archivos();
 
-
-    public Departamento() {
+    public Puesto() {
         initComponents();
         id.setEnabled(false);
-        id.setText(a.nextId("departamentos.txt")+"");
+        id.setText(a.nextId("puestos.txt")+"");
     }
-
-    public Departamento(String idd){
+    public Puesto(String idp){
         initComponents();
-         id.setText(idd);
+         id.setText(idp);
          id.setEnabled(false);
          Buscar(id.getText());
     }
-    
-    public String Buscar(String filtro)
+public String Buscar(String filtro)
         {
-            File fAntiguo= new File("departamentos.txt");
+            File fAntiguo= new File("puestos.txt");
             String aCadena=filtro;
             // Declaro un nuevo buffer de lectura
             BufferedReader br;
@@ -102,7 +103,7 @@ archivos a = new archivos();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Departamentos", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 3, 14))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Puestos", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 3, 14))); // NOI18N
 
         jLabel1.setText("ID");
 
@@ -217,16 +218,14 @@ archivos a = new archivos();
                     .addComponent(btn_borrar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btn_salir)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -236,25 +235,6 @@ archivos a = new archivos();
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btn_GuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_GuardarActionPerformed
-                String idd, depto;
-         //Asignacion de valores
-         idd = id.getText();
-         depto = descripcion.getText(); 
-
-        try {
-            //Crear archivo
-            a.GuardarDatos("departamentos.txt",idd,depto); 
-        } catch (IOException ex) {
-             
-        }
-        limpiar();
-         JOptionPane.showMessageDialog(descripcion, "Departamento creado!", "Información", 
-                                            JOptionPane.INFORMATION_MESSAGE);
-         
-         id.setText(a.nextId("departamentos.txt")+"");
-    }//GEN-LAST:event_btn_GuardarActionPerformed
-
     private void idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_idActionPerformed
@@ -263,62 +243,73 @@ archivos a = new archivos();
         // TODO add your handling code here:
     }//GEN-LAST:event_descripcionActionPerformed
 
-    private void btn_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_salirActionPerformed
-      this.dispose();
-    }//GEN-LAST:event_btn_salirActionPerformed
-
-    private void btn_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modificarActionPerformed
-             
-            
-
-        String lineaNueva = id.getText()+","+descripcion.getText();
-        
-       if(Buscar(id.getText()).equals("not found")){
-           JOptionPane.showMessageDialog(descripcion, "Departamento inexistente!", "Advertencia", 
-                                            JOptionPane.WARNING_MESSAGE);
-           return;
-       }
-       
-            a.Modificar("Departamentos", id.getText(), lineaNueva);  
-       
-
-        limpiar();
-        id.setText(a.nextId("departamentos.txt")+"");
-        JOptionPane.showMessageDialog(descripcion, "Departamento modificado!", "Información", 
-         JOptionPane.INFORMATION_MESSAGE);       
-        
-        
-        
-    }//GEN-LAST:event_btn_modificarActionPerformed
-
     private void btn_NueviActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_NueviActionPerformed
-    limpiar();
-       id.setText(a.nextId("departamentos.txt")+"");
+        limpiar();
+        id.setText(a.nextId("puestos.txt")+"");
     }//GEN-LAST:event_btn_NueviActionPerformed
 
-    private void btn_borrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_borrarActionPerformed
-  
-       if(Buscar(id.getText()).equals("not found")){
-           JOptionPane.showMessageDialog(descripcion, "Departamento inexistente!", "Advertencia", 
-                                            JOptionPane.WARNING_MESSAGE);
-           return;
-       }
-            a.Modificar("departamentos", id.getText(), "");  
-       
+    private void btn_GuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_GuardarActionPerformed
+        String idp, pto;
+        //Asignacion de valores
+        idp = id.getText();
+        pto = descripcion.getText();
+
+        try {
+            //Crear archivo
+            a.GuardarDatos("puestos.txt",idp,pto);
+        } catch (IOException ex) {
+
+        }
+        limpiar();
+        JOptionPane.showMessageDialog(descripcion, "Puesto creado!", "Información",
+            JOptionPane.INFORMATION_MESSAGE);
+
+        id.setText(a.nextId("puestos.txt")+"");
+    }//GEN-LAST:event_btn_GuardarActionPerformed
+
+    private void btn_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modificarActionPerformed
+
+        String lineaNueva = id.getText()+","+descripcion.getText();
+
+        if(Buscar(id.getText()).equals("not found")){
+            JOptionPane.showMessageDialog(descripcion, "Puesto inexistente!", "Advertencia",
+                JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        a.Modificar("Puestos", id.getText(), lineaNueva);
 
         limpiar();
-        id.setText(a.nextId("departamento.txt")+"");
-        JOptionPane.showMessageDialog(descripcion, "Departamento eliminado!", "Información", 
-         JOptionPane.INFORMATION_MESSAGE);       
-        
-        
-             
+        id.setText(a.nextId("puestos.txt")+"");
+        JOptionPane.showMessageDialog(descripcion, "Puesto modificado!", "Información",
+            JOptionPane.INFORMATION_MESSAGE);
+
+    }//GEN-LAST:event_btn_modificarActionPerformed
+
+    private void btn_borrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_borrarActionPerformed
+
+        if(Buscar(id.getText()).equals("not found")){
+            JOptionPane.showMessageDialog(descripcion, "Puesto inexistente!", "Advertencia",
+                JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        a.Modificar("puesto", id.getText(), "");
+
+        limpiar();
+        id.setText(a.nextId("puestos.txt")+"");
+        JOptionPane.showMessageDialog(descripcion, "Puesto eliminado!", "Información",
+            JOptionPane.INFORMATION_MESSAGE);
+
     }//GEN-LAST:event_btn_borrarActionPerformed
+
+    private void btn_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_salirActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btn_salirActionPerformed
 
     private void btn_consultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_consultaActionPerformed
 
-        new conDepartamento().setVisible(true);
-        this.dispose(); 
+        new conPuestos().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btn_consultaActionPerformed
 
     /**
@@ -338,20 +329,20 @@ archivos a = new archivos();
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Departamento.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Puesto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Departamento.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Puesto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Departamento.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Puesto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Departamento.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Puesto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Departamento().setVisible(true);
+                new Puesto().setVisible(true);
             }
         });
     }
