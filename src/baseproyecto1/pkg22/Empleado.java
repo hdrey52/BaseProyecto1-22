@@ -14,21 +14,21 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 public class Empleado extends javax.swing.JFrame {
-
+    archivos a = new archivos();
     archivos metodos = new archivos();
 
     public Empleado() {
         initComponents();
         idemp.setText(metodos.nextId("empleados.txt")+"");
         idemp.setEnabled(false);
-       // iddpto.setEnabled(false);
-       // idpto.setEnabled(false);
+        iddpto.setEnabled(false);
+        idpto.setEnabled(false);
     }
            public Empleado (String id){
         initComponents();
         idemp.setEnabled(false);
-       // idpto.setEnabled(false);
-       // idpto.setEnabled(false);
+        idpto.setEnabled(false);
+        idpto.setEnabled(false);
         Buscar(id);
     }
            
@@ -230,6 +230,11 @@ public class Empleado extends javax.swing.JFrame {
         });
 
         btn_eliminar.setText("Eliminar");
+        btn_eliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_eliminarActionPerformed(evt);
+            }
+        });
 
         dir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -476,8 +481,8 @@ public class Empleado extends javax.swing.JFrame {
     
         int ide, iddptos, idptos;
         double salario;
-        String nomb, apell, dire, fechaing, telef;
-        boolean sexo, coope;
+        String nomb, apell, dire, fechaing, telef, sexo, cooper;
+        boolean coope;
         /*VALIDACIONES*/
         validar();
          /*VALIDACIONES*/
@@ -490,18 +495,18 @@ public class Empleado extends javax.swing.JFrame {
          telef = tef.getText();
          
          if(sex.getSelectedItem().equals("Masculino"))
-             sexo = true;
+             sexo = "Masculino";
          else
-             sexo = false;
+             sexo = "Femenino";
          
          iddptos = Integer.parseInt(iddpto.getText());
          fechaing = fecha.getText();
          idptos = Integer.parseInt(idpto.getText());
          
          if(coop.getSelectedItem().equals("No Posee"))
-             coope = true;
+             cooper = "No posee";
          else
-             coope = false;
+             cooper = "Posee";
          
          salario = Double.parseDouble(slrio.getText());
          //Asignacion de valores
@@ -511,7 +516,7 @@ public class Empleado extends javax.swing.JFrame {
             try {
             //Crear archivo
             metodos.GuardarDatos("empleados.txt", ide+"",nomb, apell+"", dire+"", telef+"", sexo+"", 
-                                                    iddptos+"", fechaing+"", idptos+"", coope+"", salario+"");
+                                                    iddptos+"", fechaing+"", idptos+"", cooper+"", salario+"");
             
         } catch (IOException ex) {
             Logger.getLogger(Departamento.class.getName()).log(Level.SEVERE, null, ex);
@@ -584,6 +589,21 @@ public class Empleado extends javax.swing.JFrame {
      new conEmpleado().setVisible(true);
     }//GEN-LAST:event_btn_consultarActionPerformed
 
+    private void btn_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarActionPerformed
+        // TODO add your handling code here:
+            if(Buscar(idemp.getText()).equals("not found")){
+            JOptionPane.showMessageDialog(nom, "Empleado inexistente!", "Advertencia",
+                JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        a.Modificar("empleados", idemp.getText(), "");
+
+        limpiar();
+        JOptionPane.showMessageDialog(nom, "Empleado eliminado!", "Información",
+            JOptionPane.INFORMATION_MESSAGE);
+
+    }//GEN-LAST:event_btn_eliminarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -631,9 +651,9 @@ public class Empleado extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> coop;
     private javax.swing.JTextField dir;
     private javax.swing.JFormattedTextField fecha;
-    private javax.swing.JTextField iddpto;
+    public static javax.swing.JTextField iddpto;
     private javax.swing.JTextField idemp;
-    private javax.swing.JTextField idpto;
+    public static javax.swing.JTextField idpto;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -652,4 +672,5 @@ public class Empleado extends javax.swing.JFrame {
     private javax.swing.JTextField slrio;
     private javax.swing.JFormattedTextField tef;
     // End of variables declaration//GEN-END:variables
+   
 }

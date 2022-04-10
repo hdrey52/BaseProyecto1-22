@@ -31,18 +31,29 @@ int entrada = 2;
         cargarDptos(); 
         entrada = y;
     }
+        
     void enviardatosdpto(){
         int fila=Departamentos.getSelectedRow();
         if(fila>=0){
             
-                   new Departamento(Departamentos.getValueAt(fila,0).toString()).setVisible(true);
+            if(entrada == 0){
+                    Empleado.iddpto.setText(Departamentos.getValueAt(fila,0).toString());
                    this.dispose();
+            }
+            else{
+             new Departamento(Departamentos.getValueAt(fila,0).toString()).setVisible(true);
+                   this.dispose();
+             }
+            
+                  /* new Departamento(Departamentos.getValueAt(fila,0).toString()).setVisible(true);
+                   this.dispose();*/
     }
     else{
         JOptionPane.showMessageDialog(null,"Por favor, seleccione una fila");
     }
         
     }
+    
         public void Buscar(String filtro)
         {
             //TABLA

@@ -34,9 +34,14 @@ int entrada = 2;
 void enviardatospto(){
         int fila=Puestos.getSelectedRow();
         if(fila>=0){
-            
-                   new Puesto(Puestos.getValueAt(fila,0).toString()).setVisible(true);
+         if(entrada == 0){
+                    Empleado.idpto.setText(Puestos.getValueAt(fila,0).toString());
                    this.dispose();
+            }
+            else{
+             new Puesto(Puestos.getValueAt(fila,0).toString()).setVisible(true);
+                   this.dispose();
+             }
     }
     else{
         JOptionPane.showMessageDialog(null,"Por favor, seleccione una fila");

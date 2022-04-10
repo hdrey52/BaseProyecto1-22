@@ -1,2 +1,1 @@
-1,Ramon,Domg,PSS,111-111-1111,Masculino,1,11/11/1111,1,Posee,50000.0
-2,Dre3yz,SADAS,ASDAS,123-213-1212,Masculino,2,84/45/5466,7,No Posee,8000.0
+
