@@ -43,7 +43,7 @@ void limpiar(){
                           {          
                                 String[] arrOfStr = linea.split(","); 
                             
-                            if(arrOfStr[1].equals(user) && arrOfStr[2].equals(pass))
+                            if(arrOfStr[0].equals(user) && arrOfStr[1].equals(pass))
                                {                  
                                    br.close();    
                                
@@ -51,7 +51,7 @@ void limpiar(){
                                     MenuBar.setVisible(true);
                                       Panel.setVisible(false);
 
-                                    if(arrOfStr[6].equals("0")){
+                                    if(arrOfStr[5].equals("0")){
                                            JOptionPane.showMessageDialog(psw,"Bienvenido administrador", "Informacion", 
          JOptionPane.INFORMATION_MESSAGE);   
                                         mant_usuario.setVisible(true);
@@ -183,6 +183,11 @@ void limpiar(){
         mant_usuario.setText("Mantenimiento");
 
         jMenuItem1.setText("Usuario");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
         mant_usuario.add(jMenuItem1);
 
         jMenuItem2.setText("Departamento");
@@ -302,6 +307,11 @@ void limpiar(){
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
      new Departamento().setVisible(true);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+            
+        new Usuario().setVisible(true);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
      * @param args the command line arguments
