@@ -230,7 +230,7 @@ void limpiar(){
 
         MenuBar.add(jMenu3);
 
-        jMenu4.setText("Salir");
+        jMenu4.setText("Salire");
 
         jMenuItem11.setText("Cerrar Sesion");
         jMenuItem11.addActionListener(new java.awt.event.ActionListener() {
