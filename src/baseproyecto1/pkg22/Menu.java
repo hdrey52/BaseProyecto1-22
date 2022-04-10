@@ -240,8 +240,7 @@ void limpiar(){
         });
         jMenu4.add(jMenuItem11);
 
-        jMenuItem12.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_ESCAPE, 0));
-        jMenuItem12.setText("Cerrar ProgramaS");
+        jMenuItem12.setText("Cerrar Programa");
         jMenuItem12.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem12ActionPerformed(evt);
