@@ -24,12 +24,12 @@ public class Usuario extends javax.swing.JFrame {
         initComponents();
     }
 
-//    public usuario(String idu){
-//        initComponents();
-//         id.setText(idu);
-//         Buscar(id.getText());
-//     
-//    }
+    public Usuario(String idu){
+        initComponents();
+         log.setText(idu);
+         Buscar(log.getText());
+     
+    }
     
     public String Buscar(String filtro)
         {
