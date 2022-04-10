@@ -270,6 +270,11 @@ public class Empleado extends javax.swing.JFrame {
         coop.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "No Posee", "Posee", " " }));
 
         btn_consultar.setText("Consultar");
+        btn_consultar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_consultarActionPerformed(evt);
+            }
+        });
 
         btn_bdepto.setText("buscar");
         btn_bdepto.addActionListener(new java.awt.event.ActionListener() {
@@ -297,7 +302,7 @@ public class Empleado extends javax.swing.JFrame {
         });
 
         try {
-            tef.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###-####-####")));
+            tef.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###-###-####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
@@ -484,7 +489,7 @@ public class Empleado extends javax.swing.JFrame {
          dire = dir.getText();
          telef = tef.getText();
          
-         if(sex.getSelectedItem().equals("True"))
+         if(sex.getSelectedItem().equals("Masculino"))
              sexo = true;
          else
              sexo = false;
@@ -493,7 +498,7 @@ public class Empleado extends javax.swing.JFrame {
          fechaing = fecha.getText();
          idptos = Integer.parseInt(idpto.getText());
          
-         if(coop.getSelectedItem().equals("True"))
+         if(coop.getSelectedItem().equals("No Posee"))
              coope = true;
          else
              coope = false;
@@ -544,11 +549,12 @@ public class Empleado extends javax.swing.JFrame {
         +","+idpto.getText()+","+coop.getSelectedItem()+","+slrio.getText();
 
         if(Buscar(iddpto.getText()).equals("not found")){
-            JOptionPane.showMessageDialog(this, "Factura inexistente!", "Advertencia",
+            JOptionPane.showMessageDialog(this, "Deptartamento inexistente!", "Advertencia",
                 JOptionPane.WARNING_MESSAGE);
             return;
         }
-        metodos.Modificar("empleados", iddpto.getText(), lineaNueva);
+
+        metodos.Modificar("empleados", idemp.getText(), lineaNueva);
 
         limpiar();
         idemp.setText(metodos.nextId("empleados.txt")+"");
@@ -573,6 +579,10 @@ public class Empleado extends javax.swing.JFrame {
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
     this.dispose();
     }//GEN-LAST:event_jToggleButton1ActionPerformed
+
+    private void btn_consultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_consultarActionPerformed
+     new conEmpleado().setVisible(true);
+    }//GEN-LAST:event_btn_consultarActionPerformed
 
     /**
      * @param args the command line arguments

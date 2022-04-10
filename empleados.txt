@@ -1,2 +1,2 @@
-1,Rey,Mon,por ahi,123-1231-2312,false,23,12/31/2312,21,false,123.212
-2,el otro,pero si sirve,veras que si,123-1231-2112,false,312,12/31/2312,123,false,1232.0
+1,Ramon,Domg,PSS,111-111-1111,Masculino,1,11/11/1111,1,Posee,50000.0
+2,Dre3yz,SADAS,ASDAS,123-213-1212,Masculino,2,84/45/5466,7,No Posee,8000.0
