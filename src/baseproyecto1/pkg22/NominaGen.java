@@ -316,7 +316,7 @@ void validar(){
 
         jLabel12.setText("Valor AFP");
 
-        estado.setText("jLabel3");
+        estado.setText("Estado");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);

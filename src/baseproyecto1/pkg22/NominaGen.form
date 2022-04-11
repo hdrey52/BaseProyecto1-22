@@ -409,7 +409,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="estado">
           <Properties>
-            <Property name="text" type="java.lang.String" value="jLabel3"/>
+            <Property name="text" type="java.lang.String" value="Estado"/>
           </Properties>
         </Component>
       </SubComponents>
