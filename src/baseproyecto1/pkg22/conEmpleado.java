@@ -77,7 +77,7 @@ public class conEmpleado extends javax.swing.JFrame {
         if(fila>=0){
              if(entrada == 0){
                     NominaGen.idemp.setText(empleados.getValueAt(fila,0).toString());
-                    
+                    NominaGen.Salario_Bruto.setText(empleados.getValueAt(fila,10).toString());
                    this.dispose();
                    
             }
