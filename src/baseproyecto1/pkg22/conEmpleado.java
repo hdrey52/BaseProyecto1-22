@@ -75,9 +75,21 @@ public class conEmpleado extends javax.swing.JFrame {
     void enviardatosempleado(){
         int fila=empleados.getSelectedRow();
         if(fila>=0){
-            
+             if(entrada == 0){
+                    NominaGen.idemp.setText(empleados.getValueAt(fila,0).toString());
+                    
+                   this.dispose();
+                   
+            }
+            else{
+             new Empleado(empleados.getValueAt(fila,0).toString()).setVisible(true);
+                   this.dispose();
+                   Empleado.btn_guardar.setEnabled(false);
+             }
+            /*
                    new Empleado(empleados.getValueAt(fila,0).toString()).setVisible(true);
                    this.dispose();
+                   Departamento.btn_Guardar.setEnabled(false);*/
     }
     else{
         JOptionPane.showMessageDialog(null,"Por favor, seleccione una fila");

@@ -5,6 +5,7 @@
  */
 package baseproyecto1.pkg22;
 
+import static baseproyecto1.pkg22.Departamento.btn_Guardar;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -246,6 +247,7 @@ public String Buscar(String filtro)
     private void btn_NueviActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_NueviActionPerformed
         limpiar();
         id.setText(a.nextId("puestos.txt")+"");
+        btn_Guardar.setEnabled(true);
     }//GEN-LAST:event_btn_NueviActionPerformed
 
     private void btn_GuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_GuardarActionPerformed
@@ -283,7 +285,7 @@ public String Buscar(String filtro)
         id.setText(a.nextId("puestos.txt")+"");
         JOptionPane.showMessageDialog(descripcion, "Puesto modificado!", "Información",
             JOptionPane.INFORMATION_MESSAGE);
-
+btn_Guardar.setEnabled(true);
     }//GEN-LAST:event_btn_modificarActionPerformed
 
     private void btn_borrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_borrarActionPerformed
@@ -299,7 +301,7 @@ public String Buscar(String filtro)
         id.setText(a.nextId("puestos.txt")+"");
         JOptionPane.showMessageDialog(descripcion, "Puesto eliminado!", "Información",
             JOptionPane.INFORMATION_MESSAGE);
-
+btn_Guardar.setEnabled(true);
     }//GEN-LAST:event_btn_borrarActionPerformed
 
     private void btn_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_salirActionPerformed
@@ -348,7 +350,7 @@ public String Buscar(String filtro)
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn_Guardar;
+    public static javax.swing.JButton btn_Guardar;
     private javax.swing.JButton btn_Nuevi;
     private javax.swing.JButton btn_borrar;
     private javax.swing.JButton btn_consulta;

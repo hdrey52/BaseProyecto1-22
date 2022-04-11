@@ -36,11 +36,13 @@ void enviardatospto(){
         if(fila>=0){
          if(entrada == 0){
                     Empleado.idpto.setText(Puestos.getValueAt(fila,0).toString());
+                    
                    this.dispose();
             }
             else{
              new Puesto(Puestos.getValueAt(fila,0).toString()).setVisible(true);
                    this.dispose();
+                   Puesto.btn_Guardar.setEnabled(false);
              }
     }
     else{
