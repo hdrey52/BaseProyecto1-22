@@ -595,18 +595,18 @@ void validar(){
 
     private void modActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modActionPerformed
 
-        String lineaNueva = idnomina.getText()+","+ARS.getText()+","+idemp.getText()+","+idcli.getText()+","+valor_coop.getText()+","+ISR.getText()+","+Sueldo_neto.getText()
-        +","+fecnomina.getText()+","+fecp.getText()+","+status.getSelectedItem();
+        String lineaNueva = idnomina.getText()+","+ARS.getText()+","+idemp.getText()+","+","+valor_coop.getText()+","+ISR.getText()+","+Sueldo_neto.getText()
+        +","+fecnomina.getText()+","+status.getSelectedItem();
 
-        if(Buscar(idcli.getText()).equals("not found")){
+        if(Buscar(idemp.getText()).equals("not found")){
             JOptionPane.showMessageDialog(this, "Nomina inexistente!", "Advertencia",
                 JOptionPane.WARNING_MESSAGE);
             return;
         }
-        metodos.Modificar("facturas", idcli.getText(), lineaNueva);
+        metodos.Modificar("nomina", idemp.getText(), lineaNueva);
 
         limpiar();
-        idnomina.setText(metodos.nextId("facturas.txt")+"");
+        idnomina.setText(metodos.nextId("nomina.txt")+"");
         JOptionPane.showMessageDialog(this, "Nomina modificada!", "Información",
             JOptionPane.INFORMATION_MESSAGE);
 
@@ -614,7 +614,7 @@ void validar(){
 
     private void insertaNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insertaNuevoActionPerformed
         limpiar();
-        idnomina.setText(metodos.nextId("facturas.txt")+"");
+        idnomina.setText(metodos.nextId("nomina.txt")+"");
         
          estado.setText("Creando...");
         // TODO add your handling code here:
