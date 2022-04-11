@@ -508,7 +508,7 @@ public class Empleado extends javax.swing.JFrame {
              cooper = "No posee";
          else
              cooper = "Posee";
-         
+               
          salario = Double.parseDouble(slrio.getText());
          //Asignacion de valores
          
@@ -566,14 +566,14 @@ public class Empleado extends javax.swing.JFrame {
         idemp.setText(metodos.nextId("empleados.txt")+"");
         JOptionPane.showMessageDialog(this, "Empleado modificada!", "Información",
             JOptionPane.INFORMATION_MESSAGE);
-        btn_Guardar.setEnabled(true);
+        btn_guardar.setEnabled(true);
 
     }//GEN-LAST:event_btn_modificarActionPerformed
 
     private void btn_nuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_nuevoActionPerformed
     limpiar();
         idemp.setText(metodos.nextId("empleados.txt")+"");
-        btn_Guardar.setEnabled(true);
+        btn_guardar.setEnabled(true);
     }//GEN-LAST:event_btn_nuevoActionPerformed
 
     private void btn_bdeptoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_bdeptoActionPerformed
@@ -604,7 +604,7 @@ public class Empleado extends javax.swing.JFrame {
         limpiar();
         JOptionPane.showMessageDialog(nom, "Empleado eliminado!", "Información",
             JOptionPane.INFORMATION_MESSAGE);
-        btn_Guardar.setEnabled(true);
+        btn_guardar.setEnabled(true);
     }//GEN-LAST:event_btn_eliminarActionPerformed
 
     /**

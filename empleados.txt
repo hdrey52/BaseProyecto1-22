@@ -1,1 +1,2 @@
 1,Ramon,Dominguez,Florencia,809-241-8140,Masculino,2,50/52/5255,2,No posee,8000.0
+2,Robin,Hood,tucasa,809-522-5845,Femenino,2,85/95/9555,1,No posee,5000.0
