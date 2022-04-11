@@ -19,7 +19,7 @@ archivos a = new archivos();
         initComponents();
         idemp.setEnabled(false);
         acum.setEnabled(false);
-        idemp.setText(a.nextId("cooperativa.txt")+"");
+        idemp.setText("");
     }
     public String Buscar(String filtro)
         {

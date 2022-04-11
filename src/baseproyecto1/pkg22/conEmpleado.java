@@ -83,7 +83,7 @@ public class conEmpleado extends javax.swing.JFrame {
             }
              if(entrada == 1){
                     Cooperativa.idemp.setText(empleados.getValueAt(fila,0).toString());
-                    Cooperativa.acum.setText(empleados.getValueAt(fila,10).toString());
+                 //   Cooperativa.acum.setText(empleados.getValueAt(fila,10).toString());
                    this.dispose(); 
             }
             else{
