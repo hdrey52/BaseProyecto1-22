@@ -13,6 +13,8 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class Empleado extends javax.swing.JFrame {
     archivos a = new archivos();
@@ -24,6 +26,9 @@ public class Empleado extends javax.swing.JFrame {
         idemp.setEnabled(false);
         iddpto.setEnabled(false);
         idpto.setEnabled(false);
+        fecha.setEnabled(false);
+        DateTimeFormatter dtf4 = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+        fecha.setText(dtf4.format(LocalDateTime.now()));
     }
            public Empleado (String id){
         initComponents();
@@ -43,7 +48,7 @@ public class Empleado extends javax.swing.JFrame {
         coop.setSelectedItem("True");
         idpto.setText("");
         iddpto.setText("");
-        fecha.setText("");
+        //fecha.setText("");
         slrio.setText("");     
     }
     
@@ -179,9 +184,9 @@ public class Empleado extends javax.swing.JFrame {
         btn_consultar = new javax.swing.JButton();
         btn_bdepto = new javax.swing.JButton();
         btn_bpto = new javax.swing.JButton();
-        fecha = new javax.swing.JFormattedTextField();
         tef = new javax.swing.JFormattedTextField();
         jToggleButton1 = new javax.swing.JToggleButton();
+        fecha = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -297,17 +302,6 @@ public class Empleado extends javax.swing.JFrame {
         });
 
         try {
-            fecha.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-        fecha.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                fechaKeyTyped(evt);
-            }
-        });
-
-        try {
             tef.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###-###-####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
@@ -348,16 +342,16 @@ public class Empleado extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(idemp)
-                            .addComponent(nom, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
-                            .addComponent(ape, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
-                            .addComponent(dir, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
-                            .addComponent(iddpto, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
-                            .addComponent(idpto, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
-                            .addComponent(slrio, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
-                            .addComponent(sex, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(nom)
+                            .addComponent(ape)
+                            .addComponent(dir)
+                            .addComponent(iddpto)
+                            .addComponent(idpto)
+                            .addComponent(slrio)
+                            .addComponent(sex, 0, 105, Short.MAX_VALUE)
                             .addComponent(coop, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(fecha)
-                            .addComponent(tef))
+                            .addComponent(tef)
+                            .addComponent(fecha))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btn_consultar)
@@ -537,12 +531,6 @@ public class Empleado extends javax.swing.JFrame {
             } 
     }//GEN-LAST:event_tefKeyTyped
 
-    private void fechaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fechaKeyTyped
-      if(Character.isAlphabetic(evt.getKeyChar())){
-                   evt.consume(); 
-            } 
-    }//GEN-LAST:event_fechaKeyTyped
-
     private void slrioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_slrioKeyTyped
       if(Character.isAlphabetic(evt.getKeyChar())){
                    evt.consume(); 
@@ -653,7 +641,7 @@ public class Empleado extends javax.swing.JFrame {
     private javax.swing.JButton btn_nuevo;
     private javax.swing.JComboBox<String> coop;
     private javax.swing.JTextField dir;
-    private javax.swing.JFormattedTextField fecha;
+    private javax.swing.JTextField fecha;
     public static javax.swing.JTextField iddpto;
     private javax.swing.JTextField idemp;
     public static javax.swing.JTextField idpto;

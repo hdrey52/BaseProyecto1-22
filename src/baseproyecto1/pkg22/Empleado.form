@@ -75,16 +75,16 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="idemp" max="32767" attributes="0"/>
-                              <Component id="nom" pref="100" max="32767" attributes="0"/>
-                              <Component id="ape" pref="100" max="32767" attributes="0"/>
-                              <Component id="dir" pref="100" max="32767" attributes="0"/>
-                              <Component id="iddpto" alignment="0" pref="100" max="32767" attributes="0"/>
-                              <Component id="idpto" pref="100" max="32767" attributes="0"/>
-                              <Component id="slrio" pref="100" max="32767" attributes="0"/>
-                              <Component id="sex" alignment="0" max="32767" attributes="0"/>
+                              <Component id="nom" max="32767" attributes="0"/>
+                              <Component id="ape" max="32767" attributes="0"/>
+                              <Component id="dir" max="32767" attributes="0"/>
+                              <Component id="iddpto" alignment="0" max="32767" attributes="0"/>
+                              <Component id="idpto" max="32767" attributes="0"/>
+                              <Component id="slrio" max="32767" attributes="0"/>
+                              <Component id="sex" alignment="0" pref="105" max="32767" attributes="0"/>
                               <Component id="coop" alignment="0" max="32767" attributes="0"/>
-                              <Component id="fecha" max="32767" attributes="0"/>
                               <Component id="tef" max="32767" attributes="0"/>
+                              <Component id="fecha" alignment="0" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
@@ -365,16 +365,6 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_bptoActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JFormattedTextField" name="fecha">
-          <Properties>
-            <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
-              <Format format="##/##/####" subtype="-1" type="5"/>
-            </Property>
-          </Properties>
-          <Events>
-            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fechaKeyTyped"/>
-          </Events>
-        </Component>
         <Component class="javax.swing.JFormattedTextField" name="tef">
           <Properties>
             <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
@@ -392,6 +382,8 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jToggleButton1ActionPerformed"/>
           </Events>
+        </Component>
+        <Component class="javax.swing.JTextField" name="fecha">
         </Component>
       </SubComponents>
     </Container>
