@@ -11,8 +11,12 @@ import javax.swing.JOptionPane;
 
 public class NominaGen extends javax.swing.JFrame {
  
+    static boolean EstadoCoop = false;
+    static int desc_perc = 1;
+    
     archivos metodos = new archivos();
     public NominaGen() {
+        
         initComponents();
         idnomina.setText(metodos.nextId("nomina.txt")+"");
         
@@ -21,6 +25,7 @@ public class NominaGen extends javax.swing.JFrame {
         Salario_Bruto.setEnabled(false);
         AFP.setEnabled(false);
         ARS.setEnabled(false);
+        valor_coop.setEnabled(false);
         ISR.setEnabled(false);
         Sueldo_neto.setEnabled(false); 
     }
@@ -39,20 +44,63 @@ public class NominaGen extends javax.swing.JFrame {
 void limpiar(){
     
         ARS.setText("");
-        idemp.setText("");
-                
-         
+        idemp.setText("");     
         valor_coop.setText("");
-        
         ISR.setText("");
         Sueldo_neto.setText("");
         fecnomina.setText("");
         status.setSelectedItem("True");
        
 } 
+
+  public static void calculos(){
+      
+     double sbruto=0, vars=0, vafp=0, visr=0, valcoop=0, sueldonetus=0, excedente;
+             
+     sbruto = Double.parseDouble(Salario_Bruto.getText());
+     
+     vars = 0.0304 * sbruto;
+     vafp = 0.0287 * sbruto;
+     
+     //valor cooperativa ==
+     if(EstadoCoop == true) valcoop = sbruto * (desc_perc * 0.01);
+
+
+    //PARA OBTENER EL VALOR DE ISR
+     sueldonetus = sbruto-vars-vafp;
+     
+     if(sueldonetus <= 34685){
+         visr = 0;
+     }else if(sueldonetus <= 52027.42){
+         excedente = sueldonetus - 34685;
+         visr = excedente * 0.15;
+         
+     }else if(sueldonetus <= 72260.25){
+         excedente = sueldonetus - 52027.42;
+         visr = excedente * 0.20;
+         visr = visr + 2601.33;
+         
+     }else if(sueldonetus > 72260.25){
+         excedente = sueldonetus - 72260.25;
+         visr = excedente * 0.25;
+         visr = visr + 6648;
+     }
+     //FIN ISR
+     
+     
+     sueldonetus = sbruto-(vars+vafp+visr+valcoop);
+     
+       AFP.setText(String.valueOf(vafp));
+       ARS.setText(String.valueOf(vars));
+       ISR.setText(String.valueOf(visr));
+       valor_coop.setText(String.valueOf(valcoop));
+       Sueldo_neto.setText(String.valueOf(sueldonetus));
+       AFP.setText(String.valueOf(vafp));
+      
+  }
   public String Buscar(String filtro)
         {
-            File fAntiguo= new File("facturas.txt");
+            File fAntiguo= new File("nomina.txt");
             String aCadena=filtro;
             // Declaro un nuevo buffer de lectura
             BufferedReader br;
@@ -443,7 +491,7 @@ void validar(){
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel10)
                             .addComponent(status, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(registrar)
                     .addComponent(jButton2)
@@ -631,6 +679,7 @@ void validar(){
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         new conEmpleado(0).setVisible(true);
+     
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -685,10 +734,10 @@ void validar(){
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JTextField AFP;
-    private javax.swing.JTextField ARS;
-    private javax.swing.JTextField ISR;
+    private static javax.swing.JTextField ARS;
+    private static javax.swing.JTextField ISR;
     public static javax.swing.JTextField Salario_Bruto;
-    private javax.swing.JTextField Sueldo_neto;
+    public static javax.swing.JTextField Sueldo_neto;
     private javax.swing.JLabel estado;
     private javax.swing.JFormattedTextField fecnomina;
     public static javax.swing.JTextField idemp;
@@ -712,6 +761,6 @@ void validar(){
     private javax.swing.JButton mod;
     private javax.swing.JButton registrar;
     private javax.swing.JComboBox<String> status;
-    private javax.swing.JTextField valor_coop;
+    public static javax.swing.JTextField valor_coop;
     // End of variables declaration//GEN-END:variables
 }

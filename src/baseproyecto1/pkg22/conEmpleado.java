@@ -10,6 +10,7 @@ import javax.swing.table.DefaultTableModel;
 
 public class conEmpleado extends javax.swing.JFrame {
     int entrada = 2;
+    int descuento_coop = 4;
     /**
      * Creates new form conEmpleado
      */
@@ -78,6 +79,12 @@ public class conEmpleado extends javax.swing.JFrame {
              if(entrada == 0){
                     NominaGen.idemp.setText(empleados.getValueAt(fila,0).toString());
                     NominaGen.Salario_Bruto.setText(empleados.getValueAt(fila,10).toString());
+                   
+                    NominaGen.desc_perc = descuento_coop;
+                   if( "Posee".equals((empleados.getValueAt(fila,9)).toString())){
+                    NominaGen.EstadoCoop = true;
+                    }
+                   NominaGen.calculos();
                    this.dispose();
                    
             }
@@ -323,7 +330,7 @@ public class conEmpleado extends javax.swing.JFrame {
                 .addComponent(btn3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btn4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 3, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btn5))
         );
 
