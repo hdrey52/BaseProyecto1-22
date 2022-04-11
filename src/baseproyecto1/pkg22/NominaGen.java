@@ -487,7 +487,7 @@ void validar(){
     
 
             int numnomina, idempleado;
-        double valorcooperativa, valorISR, valorSueltoneto, valorARS, valorSalariobruto, valorAFP;
+        double valorcooperativa, valorISR, valorSueldoneto, valorARS, valorSalariobruto, valorAFP;
         String fechanom;
         boolean estado;
         /*VALIDACIONES*/
@@ -502,7 +502,7 @@ void validar(){
          valorISR = Double.parseDouble(ISR.getText());
          valorARS = Double.parseDouble(ARS.getText());
          valorAFP = Double.parseDouble(AFP.getText());
-         valorSueltoneto = Double.parseDouble(Sueldo_neto.getText());
+         valorSueldoneto = Double.parseDouble(Sueldo_neto.getText());
          valorSalariobruto = Double.parseDouble(Salario_Bruto.getText());
          
          fechanom = fecnomina.getText();
@@ -517,8 +517,8 @@ void validar(){
          
             try {
             //Crear archivo
-            metodos.GuardarDatos("nomina.txt", numnomina, idempleado, fechanom, valorARS, idempleado, idcliente, valorcooperativa, valorISR+"", 
-                                                    valorSueltoneto+"", estado+"");
+            metodos.GuardarDatos("nomina.txt", numnomina+"", idempleado+"", fechanom, valorSalariobruto+"", valorAFP+"", valorARS+"", 
+                    valorcooperativa+"", valorISR+"", valorSueldoneto+"", estado+"");
             
         } catch (IOException ex) {
             Logger.getLogger(Usuario.class.getName()).log(Level.SEVERE, null, ex);
@@ -526,9 +526,9 @@ void validar(){
 
          
         limpiar();
-         JOptionPane.showMessageDialog(this, "Factura registrada!", "Información", 
+         JOptionPane.showMessageDialog(this, "Nomina registrada!", "Información", 
                                             JOptionPane.INFORMATION_MESSAGE);
-         idnomina.setText(metodos.nextId("facturas.txt")+"");
+         idnomina.setText(metodos.nextId("nomina.txt")+"");
          
         
          
@@ -585,7 +585,7 @@ void validar(){
         +","+fecnomina.getText()+","+fecp.getText()+","+status.getSelectedItem();
 
         if(Buscar(idcli.getText()).equals("not found")){
-            JOptionPane.showMessageDialog(this, "Factura inexistente!", "Advertencia",
+            JOptionPane.showMessageDialog(this, "Nomina inexistente!", "Advertencia",
                 JOptionPane.WARNING_MESSAGE);
             return;
         }
@@ -593,7 +593,7 @@ void validar(){
 
         limpiar();
         idnomina.setText(metodos.nextId("facturas.txt")+"");
-        JOptionPane.showMessageDialog(this, "Factura modificada!", "Información",
+        JOptionPane.showMessageDialog(this, "Nomina modificada!", "Información",
             JOptionPane.INFORMATION_MESSAGE);
 
     }//GEN-LAST:event_modActionPerformed
