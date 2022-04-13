@@ -162,7 +162,7 @@ void limpiar(){
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Registro de usuarios", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 3, 14))); // NOI18N
 
@@ -405,7 +405,7 @@ void limpiar(){
 //        id.setText(a.nextId("usuarios.txt")+"");
         JOptionPane.showMessageDialog(nomb, "Usuario modificado!", "Información",
             JOptionPane.INFORMATION_MESSAGE);
-
+        conUsuario.cargarUsers();
     }//GEN-LAST:event_modActionPerformed
 
     private void insertaNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insertaNuevoActionPerformed
@@ -420,13 +420,12 @@ void limpiar(){
                 JOptionPane.WARNING_MESSAGE);
             return;
         }
-        a.Modificar("usuarios", log.getText(), "");
-
+        a.Borracho("usuarios", log.getText(), "");
         limpiar();
         JOptionPane.showMessageDialog(nomb, "Usuario eliminado!", "Información",
             JOptionPane.INFORMATION_MESSAGE);
 
-        // TODO add your handling code here:
+        conUsuario.cargarUsers();
     }//GEN-LAST:event_delActionPerformed
 /**/
     /**

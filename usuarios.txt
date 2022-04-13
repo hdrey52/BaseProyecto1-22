@@ -1,1 +1,2 @@
-1,1,1,1,1,0
+1,1,Juan,Perez,Profe@yimei.com,0
+Pdrote,Kilo,Pedrote,del Kilo,Kilo@outloo.com,1

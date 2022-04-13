@@ -29,8 +29,8 @@ void enviardatosuser(){
         if(fila>=0){
             
                    new Usuario(usuarios.getValueAt(fila,0).toString()).setVisible(true);
-                   this.dispose();
-    }
+
+        }
     else{
         JOptionPane.showMessageDialog(null,"Por favor, seleccione una fila");
     }
@@ -95,7 +95,7 @@ void enviardatosuser(){
                     }
         } // fin metodo BUSCAR
     
-    public void cargarUsers()
+    public static void cargarUsers()
         {
             //TABLA
            DefaultTableModel modelo = (DefaultTableModel) usuarios.getModel();
@@ -289,6 +289,6 @@ void enviardatosuser(){
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable usuarios;
+    public static javax.swing.JTable usuarios;
     // End of variables declaration//GEN-END:variables
 }

@@ -1,3 +1,5 @@
+
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -14,7 +16,10 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import javax.swing.JOptionPane;
 
-
+/**
+ *
+ * @author Locky
+ */
 public class archivos {
     
        public int nextId(String archivo)
@@ -118,6 +123,7 @@ public class archivos {
 
                         // Capturo el nombre del fichero antiguo
                         String nAntiguo = fAntiguo.getName();
+                          System.out.println("einombre e' " + nAntiguo);
                         // Borro el fichero antiguo
                         borrar(fAntiguo);
                         //Renombro el fichero auxiliar con el nombre del fichero antiguo
@@ -133,6 +139,66 @@ public class archivos {
                     {
                         System.out.println(ex);
                     }
+        } // fin metodo Modificar
+   
+   public void Borracho(String archivo, String LineaAntigua,String nuevalinea)
+        {
+   
+            File fNuevo= new File(archivo+"1.txt"); 
+            File fAntiguo= new File(archivo+".txt");
+            String aCadena=LineaAntigua;
+            String nCadena=nuevalinea;
+            // Declaro un nuevo buffer de lectura
+            BufferedReader br;
+            BufferedWriter bw = null;
+            try
+                {
+                    if(fAntiguo.exists())
+                      {
+                        br = new BufferedReader(new FileReader(fAntiguo));
+
+                        String linea;
+
+                        while((linea=br.readLine()) != null)
+                          { 
+                              String[] arrOfStr = linea.split(","); 
+                            // if (!linea.isEmpty())   
+                            if(arrOfStr[0].equals(aCadena))
+                               {
+                                  bw = new BufferedWriter(new FileWriter(fNuevo,true));
+                                  bw.write(nCadena);
+                                  bw.close();
+                                 
+                               }
+                            else
+                               {
+                                   bw = new BufferedWriter(new FileWriter(fNuevo,true));
+                                  bw.write(linea+"\r\n");
+                                  bw.close();
+                                }
+                           } // fin while
+
+                        // Cierro el buffer de lectura
+                        br.close();
+
+                        // Capturo el nombre del fichero antiguo
+                        String nAntiguo = fAntiguo.getName();
+                        // Borro el fichero antiguo
+                        borrar(fAntiguo);
+                        //Renombro el fichero auxiliar con el nombre del fichero antiguo
+                        fNuevo.renameTo(fAntiguo);
+                    }
+                    else
+                    {
+                        System.out.println("Fichero no Existe");
+                    }
+
+                } // fin try
+                catch(IOException ex)
+                    {
+                        System.out.println(ex);
+                    }
+
         } // fin metodo Modificar
 
 
@@ -166,11 +232,11 @@ public class archivos {
         {
            try
             {
-               // Comprobamos si el fichero existe  de ser así procedemos a borrar el archivo
+               // Comprovamos si el fichero existe  de ser así procedemos a borrar el archivo
                if(Ffichero.exists())
                  {
                     Ffichero.delete();
-                    System.out.println("Fichero Borrado");
+                    System.out.println("Fichero "+ Ffichero.getName() +" fue Borrado");
                  }
 
             } // fin try
@@ -179,4 +245,5 @@ public class archivos {
                 System.out.println(e);
              }
         } // fin metodo Borrar   
+
 }
