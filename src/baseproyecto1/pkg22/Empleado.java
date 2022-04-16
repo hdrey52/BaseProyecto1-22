@@ -19,7 +19,7 @@ import java.time.format.DateTimeFormatter;
 public class Empleado extends javax.swing.JFrame {
     archivos a = new archivos();
     archivos metodos = new archivos();
-
+    
     public Empleado() {
         initComponents();
         idemp.setText(metodos.nextId("empleados.txt")+"");
@@ -107,6 +107,9 @@ public class Empleado extends javax.swing.JFrame {
         }
     
     void validar(){ 
+        double dc = Double.parseDouble(descCoop.getText());
+        
+        
        if(idemp.getText().equals("")){
              JOptionPane.showMessageDialog(idemp, "Por favor introduzca el id del empleado", "Advertencia", 
                                             JOptionPane.WARNING_MESSAGE);
@@ -159,10 +162,11 @@ public class Empleado extends javax.swing.JFrame {
                      + "para la cooperativa, debe ser menor a 5", "Advertencia", JOptionPane.WARNING_MESSAGE);
              descCoop.requestFocus();
         }
-        else if(Double.parseDouble(descCoop.getText()) > 5 || Double.parseDouble(descCoop.getText()) < 0){
+        else if(descCoop.getText().equals("4")){
              JOptionPane.showMessageDialog(descCoop, "Por favor introduzca el porciento de descuento "
                      + "para la cooperativa, debe ser menor a 5", "Advertencia", JOptionPane.WARNING_MESSAGE);
              descCoop.requestFocus();
+            
         }
         }
 
@@ -345,6 +349,7 @@ public class Empleado extends javax.swing.JFrame {
             }
         });
 
+        descCoop.setText("0");
         descCoop.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 descCoopKeyTyped(evt);
@@ -520,12 +525,7 @@ public class Empleado extends javax.swing.JFrame {
         String nomb, apell, dire, fechaing, telef, sexo, cooper;
         boolean coope;
         /*VALIDACIONES*/
-        try {
-            
         validar();
-        } catch (Exception e) {
-            System.out.println(e);
-        }
          /*VALIDACIONES*/
          
          //Asignacion de valores
