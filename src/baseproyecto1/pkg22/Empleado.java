@@ -27,6 +27,8 @@ public class Empleado extends javax.swing.JFrame {
         iddpto.setEnabled(false);
         idpto.setEnabled(false);
         fecha.setEnabled(false);
+        descCoop.setEnabled(false);
+
         DateTimeFormatter dtf4 = DateTimeFormatter.ofPattern("yyyy/MM/dd");
         fecha.setText(dtf4.format(LocalDateTime.now()));
     }
@@ -49,7 +51,8 @@ public class Empleado extends javax.swing.JFrame {
         idpto.setText("");
         iddpto.setText("");
         //fecha.setText("");
-        slrio.setText("");     
+        slrio.setText("");
+        descCoop.setText("");
     }
     
     public String Buscar(String filtro)
@@ -82,7 +85,8 @@ public class Empleado extends javax.swing.JFrame {
                                    fecha.setText(arrOfStr[7]);
                                    idpto.setText(arrOfStr[8]);
                                    coop.setSelectedItem(arrOfStr[9]);
-                                   slrio.setText(arrOfStr[10]); 
+                                   descCoop.setText(arrOfStr[10]);
+                                   slrio.setText(arrOfStr[11]); 
                                    br.close();
                                    return "found";
                                }
@@ -150,6 +154,16 @@ public class Empleado extends javax.swing.JFrame {
                                             JOptionPane.WARNING_MESSAGE);
              slrio.requestFocus();
         }
+        else if(descCoop.getText().equals("") && coop.getSelectedItem().equals("Posee")){
+             JOptionPane.showMessageDialog(descCoop, "Por favor introduzca el porciento de descuento "
+                     + "para la cooperativa, debe ser menor a 5", "Advertencia", JOptionPane.WARNING_MESSAGE);
+             descCoop.requestFocus();
+        }
+        else if(Double.parseDouble(descCoop.getText()) > 5 || Double.parseDouble(descCoop.getText()) < 0){
+             JOptionPane.showMessageDialog(descCoop, "Por favor introduzca el porciento de descuento "
+                     + "para la cooperativa, debe ser menor a 5", "Advertencia", JOptionPane.WARNING_MESSAGE);
+             descCoop.requestFocus();
+        }
         }
 
     @SuppressWarnings("unchecked")
@@ -187,6 +201,8 @@ public class Empleado extends javax.swing.JFrame {
         tef = new javax.swing.JFormattedTextField();
         jToggleButton1 = new javax.swing.JToggleButton();
         fecha = new javax.swing.JTextField();
+        descCoop = new javax.swing.JTextField();
+        jLabel12 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -278,7 +294,17 @@ public class Empleado extends javax.swing.JFrame {
             }
         });
 
-        coop.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "No Posee", "Posee", " " }));
+        coop.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "No Posee", "Posee" }));
+        coop.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                coopItemStateChanged(evt);
+            }
+        });
+        coop.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                coopFocusLost(evt);
+            }
+        });
 
         btn_consultar.setText("Consultar");
         btn_consultar.addActionListener(new java.awt.event.ActionListener() {
@@ -319,6 +345,14 @@ public class Empleado extends javax.swing.JFrame {
             }
         });
 
+        descCoop.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                descCoopKeyTyped(evt);
+            }
+        });
+
+        jLabel12.setText("Desc. %");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -354,6 +388,11 @@ public class Empleado extends javax.swing.JFrame {
                             .addComponent(fecha))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(19, 19, 19)
+                                .addComponent(jLabel12)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(descCoop, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(btn_consultar)
                             .addComponent(btn_bdepto)
                             .addComponent(btn_bpto)))
@@ -369,7 +408,7 @@ public class Empleado extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(136, 136, 136)
                         .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addContainerGap(64, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -395,7 +434,7 @@ public class Empleado extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(tef, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(17, 17, 17)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(sex, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -408,7 +447,7 @@ public class Empleado extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(fecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
                     .addComponent(idpto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -416,8 +455,10 @@ public class Empleado extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
-                    .addComponent(coop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(coop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(descCoop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel12))
+                .addGap(14, 14, 14)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
                     .addComponent(slrio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -427,7 +468,7 @@ public class Empleado extends javax.swing.JFrame {
                     .addComponent(btn_guardar)
                     .addComponent(btn_modificar)
                     .addComponent(btn_eliminar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
                 .addComponent(jToggleButton1)
                 .addGap(6, 6, 6))
         );
@@ -475,11 +516,16 @@ public class Empleado extends javax.swing.JFrame {
     private void btn_guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_guardarActionPerformed
     
         int ide, iddptos, idptos;
-        double salario;
+        double salario, porciento_descuento_coop;
         String nomb, apell, dire, fechaing, telef, sexo, cooper;
         boolean coope;
         /*VALIDACIONES*/
+        try {
+            
         validar();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
          /*VALIDACIONES*/
          
          //Asignacion de valores
@@ -488,6 +534,7 @@ public class Empleado extends javax.swing.JFrame {
          apell = ape.getText();
          dire = dir.getText();
          telef = tef.getText();
+         porciento_descuento_coop = Double.valueOf(descCoop.getText());
          
          if(sex.getSelectedItem().equals("Masculino"))
              sexo = "Masculino";
@@ -511,7 +558,7 @@ public class Empleado extends javax.swing.JFrame {
             try {
             //Crear archivo
             metodos.GuardarDatos("empleados.txt", ide+"",nomb, apell+"", dire+"", telef+"", sexo+"", 
-                                                    iddptos+"", fechaing+"", idptos+"", cooper+"", salario+"");
+                                                    iddptos+"", fechaing+"", idptos+"", cooper+"", porciento_descuento_coop+"", salario+"");
             
         } catch (IOException ex) {
             Logger.getLogger(Departamento.class.getName()).log(Level.SEVERE, null, ex);
@@ -539,11 +586,12 @@ public class Empleado extends javax.swing.JFrame {
 
     private void btn_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modificarActionPerformed
     
-        String lineaNueva = idemp.getText()+","+nom.getText()+","+ape.getText()+","+dir.getText()+","+tef.getText()+","+sex.getSelectedItem()+","+iddpto.getText()+","+fecha.getText()
-        +","+idpto.getText()+","+coop.getSelectedItem()+","+slrio.getText();
+        String lineaNueva = idemp.getText()+","+nom.getText()+","+ape.getText()+","+dir.getText()+","+tef.getText()
+                +","+sex.getSelectedItem()+","+iddpto.getText()+","+fecha.getText()+","+idpto.getText()+","
+                +coop.getSelectedItem()+","+descCoop.getText()+","+slrio.getText();
 
         if(Buscar(iddpto.getText()).equals("not found")){
-            JOptionPane.showMessageDialog(this, "Deptartamento inexistente!", "Advertencia",
+            JOptionPane.showMessageDialog(this, "Departamento inexistente!", "Advertencia",
                 JOptionPane.WARNING_MESSAGE);
             return;
         }
@@ -552,7 +600,7 @@ public class Empleado extends javax.swing.JFrame {
 
         limpiar();
         idemp.setText(metodos.nextId("empleados.txt")+"");
-        JOptionPane.showMessageDialog(this, "Empleado modificada!", "Información",
+        JOptionPane.showMessageDialog(this, "Empleado modificado!", "Información",
             JOptionPane.INFORMATION_MESSAGE);
         btn_guardar.setEnabled(true);
 
@@ -587,13 +635,36 @@ public class Empleado extends javax.swing.JFrame {
                 JOptionPane.WARNING_MESSAGE);
             return;
         }
-        a.Modificar("empleados", idemp.getText(), "");
+        a.Borracho("empleados", idemp.getText(), "");
 
         limpiar();
         JOptionPane.showMessageDialog(nom, "Empleado eliminado!", "Información",
             JOptionPane.INFORMATION_MESSAGE);
         btn_guardar.setEnabled(true);
     }//GEN-LAST:event_btn_eliminarActionPerformed
+
+    private void coopItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_coopItemStateChanged
+
+        if("Posee".equals(coop.getSelectedItem())){
+        descCoop.setEnabled(true);
+
+        }else{
+        
+        descCoop.setEnabled(false);
+        }
+    }//GEN-LAST:event_coopItemStateChanged
+
+    private void coopFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_coopFocusLost
+        // TODO add your handling code here
+        
+    }//GEN-LAST:event_coopFocusLost
+
+    private void descCoopKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_descCoopKeyTyped
+        // TODO add your handling code here:
+        if(Character.isAlphabetic(evt.getKeyChar())){
+                   evt.consume(); 
+            } 
+    }//GEN-LAST:event_descCoopKeyTyped
 
     /**
      * @param args the command line arguments
@@ -640,6 +711,7 @@ public class Empleado extends javax.swing.JFrame {
     private javax.swing.JButton btn_modificar;
     private javax.swing.JButton btn_nuevo;
     private javax.swing.JComboBox<String> coop;
+    private javax.swing.JTextField descCoop;
     private javax.swing.JTextField dir;
     private javax.swing.JTextField fecha;
     public static javax.swing.JTextField iddpto;
@@ -648,6 +720,7 @@ public class Empleado extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

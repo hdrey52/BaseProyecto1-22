@@ -1,2 +1,7 @@
 1,Ramon,Dominguez,Florencia,809-241-8140,Masculino,2,50/52/5255,2,No posee,8000.0
 2,Robin,Hood,tucasa,809-522-5845,Femenino,2,85/95/9555,1,No posee,5000.0
+3,Pedro,Almonte,Las casas 26,849-541-4801,Masculino,1,2022/04/16,2,Posee,6.0,51000.0
+4,hkjl,gm,kjg,846-562-5412,Masculino,1,2022/04/16,1,Posee,8.0,46454.0
+5,jkj,,hkkjk,kjjkn,555-555-5555,Masculino,1,2022/04/16,2,Posee,9.0,5454.0
+6,jnkl, mn,jjbjkj,111-111-1111,Masculino,1,2022/04/16,1,Posee,9.0,5465.0
+7,dadsa,khiuh,hihiuh,809-521-5523,Masculino,1,2022/04/16,2,Posee,8.0,97846.0

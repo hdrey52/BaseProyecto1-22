@@ -88,6 +88,12 @@
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+                                  <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="descCoop" min="-2" pref="74" max="-2" attributes="0"/>
+                              </Group>
                               <Component id="btn_consultar" min="-2" max="-2" attributes="0"/>
                               <Component id="btn_bdepto" min="-2" max="-2" attributes="0"/>
                               <Component id="btn_bpto" min="-2" max="-2" attributes="0"/>
@@ -108,7 +114,7 @@
                           <Component id="jToggleButton1" min="-2" pref="86" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace pref="34" max="32767" attributes="0"/>
+                  <EmptySpace pref="64" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -141,7 +147,7 @@
                       <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="tef" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="sex" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -157,7 +163,7 @@
                       <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="fecha" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="idpto" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -167,8 +173,10 @@
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="coop" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="descCoop" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel12" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="slrio" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -180,7 +188,7 @@
                       <Component id="btn_modificar" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btn_eliminar" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="12" max="32767" attributes="0"/>
+                  <EmptySpace pref="11" max="32767" attributes="0"/>
                   <Component id="jToggleButton1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
               </Group>
@@ -330,13 +338,16 @@
         <Component class="javax.swing.JComboBox" name="coop">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="3">
+              <StringArray count="2">
                 <StringItem index="0" value="No Posee"/>
                 <StringItem index="1" value="Posee"/>
-                <StringItem index="2" value=" "/>
               </StringArray>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="coopItemStateChanged"/>
+            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="coopFocusLost"/>
+          </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
@@ -384,6 +395,16 @@
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="fecha">
+        </Component>
+        <Component class="javax.swing.JTextField" name="descCoop">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="descCoopKeyTyped"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel12">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Desc. %"/>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>

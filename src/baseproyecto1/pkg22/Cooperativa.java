@@ -106,6 +106,12 @@ archivos a = new archivos();
 
         jLabel1.setText("Empleado");
 
+        idemp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                idempActionPerformed(evt);
+            }
+        });
+
         jButton1.setText("Buscar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -258,10 +264,14 @@ archivos a = new archivos();
        
 
         limpiar();
-        idemp.setText(a.nextId("cooperativa.txt")+"");
+        //idemp.setText(a.nextId("cooperativa.txt")+"");
         JOptionPane.showMessageDialog(desc, "Descuento modificado!", "Información", 
          JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void idempActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idempActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_idempActionPerformed
 
     /**
      * @param args the command line arguments
