@@ -385,7 +385,7 @@ void limpiar(){
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         this.dispose();
-        // TODO add your handling code here:
+       registrar.setEnabled(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void modActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modActionPerformed
@@ -406,11 +406,12 @@ void limpiar(){
         JOptionPane.showMessageDialog(nomb, "Usuario modificado!", "Información",
             JOptionPane.INFORMATION_MESSAGE);
         conUsuario.cargarUsers();
+        registrar.setEnabled(true);
     }//GEN-LAST:event_modActionPerformed
 
     private void insertaNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insertaNuevoActionPerformed
         limpiar();
-        // TODO add your handling code here:
+        registrar.setEnabled(true);
     }//GEN-LAST:event_insertaNuevoActionPerformed
 
     private void delActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delActionPerformed
@@ -426,6 +427,7 @@ void limpiar(){
             JOptionPane.INFORMATION_MESSAGE);
 
         conUsuario.cargarUsers();
+        registrar.setEnabled(true);
     }//GEN-LAST:event_delActionPerformed
 /**/
     /**
@@ -487,6 +489,6 @@ void limpiar(){
     private javax.swing.JButton mod;
     private javax.swing.JTextField nomb;
     private javax.swing.JTextField pass;
-    private javax.swing.JButton registrar;
+    public static javax.swing.JButton registrar;
     // End of variables declaration//GEN-END:variables
 }

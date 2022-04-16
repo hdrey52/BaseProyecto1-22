@@ -19,7 +19,7 @@ public class NominaGen extends javax.swing.JFrame {
         
         initComponents();
         idnomina.setText(metodos.nextId("nomina.txt")+"");
-        
+        mod.setEnabled(false);
         idnomina.setEnabled(false);
         idemp.setEnabled(false);
         Salario_Bruto.setEnabled(false);
@@ -403,9 +403,9 @@ void validar(){
                                         .addComponent(jLabel5)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(Salario_Bruto, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addGap(6, 6, 6)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jButton1)
                                     .addComponent(jLabel11))
@@ -429,7 +429,6 @@ void validar(){
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                             .addComponent(valor_coop, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel6)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(ARS, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))))
@@ -740,9 +739,9 @@ void validar(){
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JButton mod;
+    public static javax.swing.JButton mod;
     private javax.swing.JButton registrar;
-    private javax.swing.JComboBox<String> status;
+    public static javax.swing.JComboBox<String> status;
     public static javax.swing.JTextField valor_coop;
     // End of variables declaration//GEN-END:variables
 }

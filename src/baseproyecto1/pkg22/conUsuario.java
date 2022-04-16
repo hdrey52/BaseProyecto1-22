@@ -29,7 +29,7 @@ void enviardatosuser(){
         if(fila>=0){
             
                    new Usuario(usuarios.getValueAt(fila,0).toString()).setVisible(true);
-
+                   Usuario.registrar.setEnabled(false);
         }
     else{
         JOptionPane.showMessageDialog(null,"Por favor, seleccione una fila");

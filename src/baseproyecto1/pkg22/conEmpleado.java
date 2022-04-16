@@ -88,12 +88,12 @@ public class conEmpleado extends javax.swing.JFrame {
                    this.dispose();
                    
             }
-             if(entrada == 1){
+           /*  if (entrada == 1){
                     Cooperativa.idemp.setText(empleados.getValueAt(fila,0).toString());
                  //   Cooperativa.acum.setText(empleados.getValueAt(fila,10).toString());
                    this.dispose(); 
-            }
-            else{
+            }*/
+             else{
              new Empleado(empleados.getValueAt(fila,0).toString()).setVisible(true);
                    this.dispose();
                    Empleado.btn_guardar.setEnabled(false);
