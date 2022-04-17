@@ -295,7 +295,7 @@ btn_Guardar.setEnabled(true);
                 JOptionPane.WARNING_MESSAGE);
             return;
         }
-        a.Modificar("puesto", id.getText(), "");
+        a.Borracho("puesto", id.getText(), "");
 
         limpiar();
         id.setText(a.nextId("puestos.txt")+"");

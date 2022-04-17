@@ -23,17 +23,6 @@ public class NominaRev extends javax.swing.JFrame {
         cargarUsers();
     }
     
-    void enviardatosuser(){
-        int fila=Nominas.getSelectedRow();
-        if(fila>=0){
-            
-                   new NominaGen(Nominas.getValueAt(fila,0).toString()).setVisible(true);
-                   NominaGen.mod.setEnabled(true);
-        }
-    else{
-        JOptionPane.showMessageDialog(null,"Por favor, seleccione una fila");
-    }
-    }
     
      public void Buscar(String filtro)
         {
@@ -190,9 +179,16 @@ public class NominaRev extends javax.swing.JFrame {
             Class[] types = new Class [] {
                 java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
             };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false, false, false
+            };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
         Nominas.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -202,7 +198,7 @@ public class NominaRev extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(Nominas);
 
-        jButton2.setText("Estado");
+        jButton2.setText("Cambiar Estado");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -268,11 +264,39 @@ public class NominaRev extends javax.swing.JFrame {
     }//GEN-LAST:event_idfiltroKeyReleased
 
     private void NominasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NominasMouseClicked
-        
     }//GEN-LAST:event_NominasMouseClicked
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+            
+             
+        int fila=Nominas.getSelectedRow();
+        if(fila>=0 && fila <=Nominas.getRowCount()){
+            
+        String Idnom =Nominas.getValueAt(fila,0).toString();
+        String Idemp =Nominas.getValueAt(fila,1).toString();
+        String fecn =Nominas.getValueAt(fila,2).toString();
+        String sueldobruto =Nominas.getValueAt(fila,3).toString();
+        String afp =Nominas.getValueAt(fila,4).toString();
+        String ars =Nominas.getValueAt(fila,5).toString();
+        String coop =Nominas.getValueAt(fila,6).toString();
+        String isr =Nominas.getValueAt(fila,7).toString();
+        String sueldon =Nominas.getValueAt(fila,8).toString();
+        String Estado =Nominas.getValueAt(fila,9).toString();
+        
+        Estado = "false".equals(Estado) ? "true" : "true".equals(Estado) ? "false" : "true";
+        
+        String lineaNueva = Idnom+","+Idemp+","+fecn+","+sueldobruto+","+afp+","
+                +ars+","+coop+","+isr+","+sueldon+","+Estado;
 
+        a.Modificar("nomina", Idnom, lineaNueva);
+
+        cargarUsers();
+        JOptionPane.showMessageDialog(this, "Estado modificado!", "Información",
+            JOptionPane.INFORMATION_MESSAGE);
+        }
+    else{
+        JOptionPane.showMessageDialog(null,"Por favor, seleccione una fila");
+    }
     }//GEN-LAST:event_jButton2ActionPerformed
     
     /**

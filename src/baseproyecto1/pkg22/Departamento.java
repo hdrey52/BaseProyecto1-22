@@ -304,7 +304,7 @@ archivos a = new archivos();
                                             JOptionPane.WARNING_MESSAGE);
            return;
        }
-            a.Modificar("departamentos", id.getText(), "");  
+            a.Borracho("departamentos", id.getText(), "");  
        
 
         limpiar();

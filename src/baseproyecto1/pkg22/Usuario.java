@@ -119,6 +119,10 @@ public class Usuario extends javax.swing.JFrame {
 
         }
  
+ void norepetir_users(){
+     
+     
+ }
 void limpiar(){
         log.setText("");
         pass.setText("");
@@ -358,6 +362,12 @@ void limpiar(){
         /*VALIDACIONES*/
 
         if(validar() == 0) return;
+
+        if(Buscar(log.getText()).equals("found")){
+            JOptionPane.showMessageDialog(acceso, "Usuario ya esta en uso, intente con uno nuevo!", "Advertencia",
+                JOptionPane.WARNING_MESSAGE);
+            return;
+        }
         /*VALIDACIONES*/
 
         //Asignacion de valores
