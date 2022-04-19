@@ -22,17 +22,8 @@ archivos a = new archivos();
         initComponents();
          cargarUsers();
     }
-    void enviardatosuser(){
-        int fila=Nominas.getSelectedRow();
-        if(fila>=0){
-            
-                   new NominaGen(Nominas.getValueAt(fila,0).toString()).setVisible(true);
-                   NominaGen.mod.setEnabled(true);
-        }
-    else{
-        JOptionPane.showMessageDialog(null,"Por favor, seleccione una fila");
-    }
-    }
+    
+    
     
      public void Buscar(String filtro)
         {
@@ -162,17 +153,19 @@ archivos a = new archivos();
         jScrollPane1 = new javax.swing.JScrollPane();
         Nominas = new javax.swing.JTable();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Consulta de Nomina", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 3, 14))); // NOI18N
 
-        jLabel1.setText("Fecha");
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel1.setText("Fecha:");
 
         try {
             idfiltrofec.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("30/##/####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        idfiltrofec.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         idfiltrofec.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 idfiltrofecActionPerformed(evt);
@@ -190,14 +183,14 @@ archivos a = new archivos();
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(49, 49, 49)
                 .addComponent(idfiltrofec, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(63, Short.MAX_VALUE)
+                .addContainerGap(43, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(idfiltrofec, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -232,17 +225,18 @@ archivos a = new archivos();
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 634, Short.MAX_VALUE))
                 .addContainerGap())
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 646, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 92, Short.MAX_VALUE)
+                .addGap(23, 23, 23))
         );
 
         pack();
@@ -254,15 +248,15 @@ archivos a = new archivos();
         cargarUsers();
     }//GEN-LAST:event_idfiltrofecKeyReleased
 
-    private void NominasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NominasMouseClicked
-
-    }//GEN-LAST:event_NominasMouseClicked
-
     private void idfiltrofecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idfiltrofecActionPerformed
          Buscar(idfiltrofec.getText()); 
         if(idfiltrofec.getText().isEmpty())
             cargarUsers();
     }//GEN-LAST:event_idfiltrofecActionPerformed
+
+    private void NominasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NominasMouseClicked
+
+    }//GEN-LAST:event_NominasMouseClicked
 
     /**
      * @param args the command line arguments

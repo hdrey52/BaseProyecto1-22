@@ -92,7 +92,7 @@
                                   <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                                   <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="descCoop" min="-2" pref="74" max="-2" attributes="0"/>
+                                  <Component id="descCoop" min="-2" pref="35" max="-2" attributes="0"/>
                               </Group>
                               <Component id="btn_consultar" min="-2" max="-2" attributes="0"/>
                               <Component id="btn_bdepto" min="-2" max="-2" attributes="0"/>
@@ -114,7 +114,7 @@
                           <Component id="jToggleButton1" min="-2" pref="86" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace pref="64" max="32767" attributes="0"/>
+                  <EmptySpace pref="90" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -362,7 +362,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="btn_bdepto">
           <Properties>
-            <Property name="text" type="java.lang.String" value="buscar"/>
+            <Property name="text" type="java.lang.String" value="Buscar"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_bdeptoActionPerformed"/>
@@ -370,7 +370,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="btn_bpto">
           <Properties>
-            <Property name="text" type="java.lang.String" value="buscar"/>
+            <Property name="text" type="java.lang.String" value="Buscar"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_bptoActionPerformed"/>

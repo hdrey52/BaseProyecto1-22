@@ -317,14 +317,14 @@ public class Empleado extends javax.swing.JFrame {
             }
         });
 
-        btn_bdepto.setText("buscar");
+        btn_bdepto.setText("Buscar");
         btn_bdepto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_bdeptoActionPerformed(evt);
             }
         });
 
-        btn_bpto.setText("buscar");
+        btn_bpto.setText("Buscar");
         btn_bpto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_bptoActionPerformed(evt);
@@ -397,7 +397,7 @@ public class Empleado extends javax.swing.JFrame {
                                 .addGap(19, 19, 19)
                                 .addComponent(jLabel12)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(descCoop, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(descCoop, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(btn_consultar)
                             .addComponent(btn_bdepto)
                             .addComponent(btn_bpto)))
@@ -413,7 +413,7 @@ public class Empleado extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(136, 136, 136)
                         .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(64, Short.MAX_VALUE))
+                .addContainerGap(90, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -558,7 +558,9 @@ public class Empleado extends javax.swing.JFrame {
             try {
             //Crear archivo
             metodos.GuardarDatos("empleados.txt", ide+"",nomb, apell+"", dire+"", telef+"", sexo+"", 
-                                                    iddptos+"", fechaing+"", idptos+"", cooper+"", porciento_descuento_coop+"", salario+"");
+                                                    iddptos+"", fechaing+"", idptos+"", cooper+"", salario+"");
+            
+            metodos.GuardarDatos("cooperativa.txt", ide+"",porciento_descuento_coop+"", 0+"");
             
         } catch (IOException ex) {
             Logger.getLogger(Departamento.class.getName()).log(Level.SEVERE, null, ex);

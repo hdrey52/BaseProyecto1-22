@@ -149,7 +149,7 @@ public class NominaRev extends javax.swing.JFrame {
         Nominas = new javax.swing.JTable();
         jButton2 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Reversar Nomina", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 3, 14))); // NOI18N
 

@@ -10,7 +10,7 @@ import javax.swing.table.DefaultTableModel;
 
 public class conEmpleado extends javax.swing.JFrame {
     int entrada = 2;
-    int descuento_coop = 4;
+
     /**
      * Creates new form conEmpleado
      */
@@ -77,14 +77,7 @@ public class conEmpleado extends javax.swing.JFrame {
         int fila=empleados.getSelectedRow();
         if(fila>=0){
              if(entrada == 0){
-                    NominaGen.idemp.setText(empleados.getValueAt(fila,0).toString());
-                    NominaGen.Salario_Bruto.setText(empleados.getValueAt(fila,10).toString());
-                   
-                    NominaGen.desc_perc = descuento_coop;
-                   if( "Posee".equals((empleados.getValueAt(fila,9)).toString())){
-                    NominaGen.EstadoCoop = true;
-                    }
-                   NominaGen.calculos();
+                  
                    this.dispose();
                    
             }
@@ -265,7 +258,7 @@ public class conEmpleado extends javax.swing.JFrame {
         empleados = new javax.swing.JTable();
         jToggleButton1 = new javax.swing.JToggleButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Consulta de Empleados", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 3, 14))); // NOI18N
 
@@ -488,8 +481,8 @@ public class conEmpleado extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(68, 68, 68)
                         .addComponent(jToggleButton1)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -498,8 +491,8 @@ public class conEmpleado extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(134, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(0, 0, 0))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

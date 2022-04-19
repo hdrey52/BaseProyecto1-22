@@ -106,7 +106,6 @@ void limpiar(){
         jMenu2 = new javax.swing.JMenu();
         jMenuItem5 = new javax.swing.JMenuItem();
         jMenuItem6 = new javax.swing.JMenuItem();
-        jMenuItem14 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenuItem7 = new javax.swing.JMenuItem();
         jMenuItem8 = new javax.swing.JMenuItem();
@@ -220,18 +219,15 @@ void limpiar(){
         jMenu2.setText("Procesos");
 
         jMenuItem5.setText("Generar Nomina");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem5);
 
         jMenuItem6.setText("Reversar Nomina");
         jMenu2.add(jMenuItem6);
-
-        jMenuItem14.setText("Cooperativa");
-        jMenuItem14.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem14ActionPerformed(evt);
-            }
-        });
-        jMenu2.add(jMenuItem14);
 
         MenuBar.add(jMenu2);
 
@@ -270,11 +266,16 @@ void limpiar(){
         jMenu3.add(jMenuItem10);
 
         jMenuItem13.setText("Nomina");
+        jMenuItem13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem13ActionPerformed(evt);
+            }
+        });
         jMenu3.add(jMenuItem13);
 
         MenuBar.add(jMenu3);
 
-        jMenu4.setText("SalirEU");
+        jMenu4.setText("Salir");
 
         jMenuItem11.setText("Cerrar Sesion");
         jMenuItem11.addActionListener(new java.awt.event.ActionListener() {
@@ -325,7 +326,8 @@ void limpiar(){
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenuItem12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem12ActionPerformed
-        // TODO add your handling code here:
+
+        this.dispose();
     }//GEN-LAST:event_jMenuItem12ActionPerformed
 
     private void btn_IngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_IngresarActionPerformed
@@ -367,9 +369,15 @@ void limpiar(){
     new conUsuario().setVisible(true);
     }//GEN-LAST:event_jMenuItem7ActionPerformed
 
-    private void jMenuItem14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem14ActionPerformed
-    new Cooperativa().setVisible(true);
-    }//GEN-LAST:event_jMenuItem14ActionPerformed
+    private void jMenuItem13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem13ActionPerformed
+    new conNomina().setVisible(true);
+
+    }//GEN-LAST:event_jMenuItem13ActionPerformed
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        // TODO add your handling code here:
+        new NominaGen().setVisible(true);
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -421,7 +429,6 @@ void limpiar(){
     private javax.swing.JMenuItem jMenuItem11;
     private javax.swing.JMenuItem jMenuItem12;
     private javax.swing.JMenuItem jMenuItem13;
-    private javax.swing.JMenuItem jMenuItem14;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
