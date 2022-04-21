@@ -52,7 +52,7 @@ public class NominaGen extends javax.swing.JFrame {
                     
                     double sbruto = (Double.parseDouble(arrOfStr[10]));
                     double vars = 0, vafp = 0, visr = 0, valcoop = 0, sueldonetus = 0, excedente;
-                    double acum_coop;
+                    double acum_coop =0;
                     EstadoCoop = "Posee".equals(arrOfStr[9]);
                     //para obtener el valor descuento de la cooperativa
                                 if (EstadoCoop == true) {
@@ -66,11 +66,13 @@ public class NominaGen extends javax.swing.JFrame {
                                             if (arrOfStrCoop[0].equals(arrOfStr[0])) {
                                                 desc_perc = Double.parseDouble(arrOfStrCoop[1]);
                                                 valcoop = sbruto * (desc_perc * 0.01);
-                                                acum_coop = Double.parseDouble(arrOfStrCoop[2]) + valcoop;
-                                                lnueva = arrOfStrCoop[0]+","+ arrOfStrCoop[1]+","+ acum_coop+",";
-                                                metodos.Modificar("cooperativa", arrOfStrCoop[0],lnueva);
-
+                                                acum_coop = Double.valueOf(arrOfStrCoop[2]) + valcoop;
+                                                System.out.println("cope: "+valcoop+" acum: "+ acum_coop);
+                                                lnueva = arrOfStr[0]+","+ arrOfStrCoop[1]+","+ acum_coop+"";
+                                                    
                                             }
+                                                lnueva = arrOfStr[0]+","+ arrOfStrCoop[1]+","+ acum_coop+"";
+                                                metodos.Modificar("cooperativa", arrOfStr[0],lnueva);
                                         }
                                     } catch (Exception e) {
                                         System.out.println(e);
@@ -87,9 +89,9 @@ public class NominaGen extends javax.swing.JFrame {
 
                     //valor cooperativa ==
                     if (EstadoCoop == true) {
+                        
                     }
 
-                    System.out.println(EstadoCoop + " y descperc= " + desc_perc + " y valcoop=" + valcoop);
                     //PARA OBTENER EL VALOR DE ISR
                     sueldonetus = sbruto - vars - vafp;
 

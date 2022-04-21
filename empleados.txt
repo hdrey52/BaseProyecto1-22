@@ -1,3 +1,3 @@
 1,Juan,Diaz,as.@gmail.com,809-547-8954,Masculino,3,2022/04/19,3,Posee,32000.0
-2,Pedro,Dizla,calle c,829-365-9541,Femenino,3,2022/04/19,3,Posee,40100.0
+1,Juan,Diaz,as.@gmail.com,809-547-8954,Masculino,2,2022/04/19,3,Posee,32000.0
 3,Luz,Alba,Los Razmone,784-596-2256,Femenino,3,2022/04/19,3,Posee,10000.0

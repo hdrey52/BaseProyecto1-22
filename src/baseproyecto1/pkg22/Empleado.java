@@ -85,8 +85,7 @@ public class Empleado extends javax.swing.JFrame {
                                    fecha.setText(arrOfStr[7]);
                                    idpto.setText(arrOfStr[8]);
                                    coop.setSelectedItem(arrOfStr[9]);
-                                   descCoop.setText(arrOfStr[10]);
-                                   slrio.setText(arrOfStr[11]); 
+                                   slrio.setText(arrOfStr[10]); 
                                    br.close();
                                    return "found";
                                }
@@ -590,8 +589,9 @@ public class Empleado extends javax.swing.JFrame {
     
         String lineaNueva = idemp.getText()+","+nom.getText()+","+ape.getText()+","+dir.getText()+","+tef.getText()
                 +","+sex.getSelectedItem()+","+iddpto.getText()+","+fecha.getText()+","+idpto.getText()+","
-                +coop.getSelectedItem()+","+descCoop.getText()+","+slrio.getText();
+                +coop.getSelectedItem()+","+slrio.getText();
 
+        
         if(Buscar(iddpto.getText()).equals("not found")){
             JOptionPane.showMessageDialog(this, "Departamento inexistente!", "Advertencia",
                 JOptionPane.WARNING_MESSAGE);
