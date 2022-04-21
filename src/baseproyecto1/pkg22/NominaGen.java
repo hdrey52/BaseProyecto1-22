@@ -82,13 +82,6 @@ public class NominaGen extends javax.swing.JFrame {
                                 lnueva = arrOfStr[0]+","+ desc_perc+","+ acum_coop+"";
                                     metodos.Modificar("cooperativa", arrOfStr[0],lnueva);
 //                                
-//                                if(EstadoCoop = true) {
-//                                }else{
-//                                lnueva = arrOfStr[0]+","+ 0+","+ acum_coop+"";
-//                                    metodos.Modificar("cooperativa", arrOfStr[0],lnueva);
-//                                
-//                                }
-
 
                     vars = 0.0304 * sbruto;
                     vafp = 0.0287 * sbruto;
