@@ -11,12 +11,14 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.text.DecimalFormat;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 
 public class conNomina extends javax.swing.JFrame {
 archivos a = new archivos();
+static DecimalFormat decimalFormat = new DecimalFormat("#.##");
 
     public conNomina() {
         initComponents();
@@ -56,11 +58,11 @@ archivos a = new archivos();
                                    reg[1] = arrOfStr[1];
                                    reg[2] = arrOfStr[2];
                                    reg[3] = arrOfStr[3];
-                                   reg[4] = arrOfStr[4];
-                                   reg[5] = arrOfStr[5];
-                                   reg[6] = arrOfStr[6];
-                                   reg[7] = arrOfStr[7];
-                                   reg[8] = arrOfStr[8];
+                                   reg[4] = decimalFormat.format(Double.valueOf(arrOfStr[4]));
+                                   reg[5] = decimalFormat.format(Double.valueOf(arrOfStr[5]));
+                                   reg[6] = decimalFormat.format(Double.valueOf(arrOfStr[6]));
+                                   reg[7] = decimalFormat.format(Double.valueOf(arrOfStr[7]));
+                                   reg[8] = decimalFormat.format(Double.valueOf(arrOfStr[8]));
                                    reg[9] = arrOfStr[9];
                                    
                                    modelo.addRow(reg);
@@ -114,12 +116,12 @@ archivos a = new archivos();
                                    reg[0] = arrOfStr[0];
                                    reg[1] = arrOfStr[1];
                                    reg[2] = arrOfStr[2];  
-                                   reg[3] = arrOfStr[3];
-                                   reg[4] = arrOfStr[4];
-                                   reg[5] = arrOfStr[5];
-                                   reg[6] = arrOfStr[6];
-                                   reg[7] = arrOfStr[7];
-                                   reg[8] = arrOfStr[8];
+                                   reg[3] = arrOfStr[3];                                   
+                                   reg[4] = decimalFormat.format(Double.valueOf(arrOfStr[4]));
+                                   reg[5] = decimalFormat.format(Double.valueOf(arrOfStr[5]));
+                                   reg[6] = decimalFormat.format(Double.valueOf(arrOfStr[6]));
+                                   reg[7] = decimalFormat.format(Double.valueOf(arrOfStr[7]));
+                                   reg[8] = decimalFormat.format(Double.valueOf(arrOfStr[8]));
                                    reg[9] = arrOfStr[9];
                                    modelo.addRow(reg);
                                    Nominas.setModel(modelo);
@@ -154,6 +156,8 @@ archivos a = new archivos();
         Nominas = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Consulta Nomina");
+        setAlwaysOnTop(true);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Consulta de Nomina", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 3, 14))); // NOI18N
 
@@ -227,7 +231,7 @@ archivos a = new archivos();
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 634, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 831, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -235,7 +239,7 @@ archivos a = new archivos();
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 92, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 313, Short.MAX_VALUE)
                 .addGap(23, 23, 23))
         );
 

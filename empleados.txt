@@ -5,8 +5,3 @@
 5,Juan,Diaz,as.@gmail.com,809-547-8954,Masculino,3,2022/04/19,3,Posee,31000.0
 6,acdac,casca,asccas,111-111-1111,Femenino,3,2022/04/21,3,Posee,312313.0
 7,ada,dsad,dasd,888-888-8888,Masculino,3,2022/04/21,2,Posee,555555.0
-8,kh,jljl,jlk,888-888-8888,Masculino,3,2022/04/21,2,Posee,2.0
-9,dads,dasda,adasd,111-111-1111,Masculino,3,2022/04/21,3,Posee,4595.0
-10,sdfds,fdfsdq,sdfsf,222-222-2222,Masculino,2,2022/04/21,3,Posee,4525424.0
-11,Jesus,Ortoz,Las palmas,809-541-4521,Masculino,1,2022/04/21,1,Posee,71000.0
-12,afasd,sdasd,sfsdf,222-222-2222,Masculino,3,2022/04/21,3,Posee,213213.0
