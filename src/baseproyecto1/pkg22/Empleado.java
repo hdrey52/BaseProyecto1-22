@@ -19,7 +19,7 @@ import java.time.format.DateTimeFormatter;
 public class Empleado extends javax.swing.JFrame {
     archivos a = new archivos();
     archivos metodos = new archivos();
-    
+    boolean skip = false;
     public Empleado() {
         initComponents();
         idemp.setText(metodos.nextId("empleados.txt")+"");
@@ -58,9 +58,11 @@ public class Empleado extends javax.swing.JFrame {
     public String Buscar(String filtro)
         {
             File fAntiguo= new File("empleados.txt");
+            File fAntiguoCoop= new File("cooperativa.txt");
             String aCadena=filtro;
             // Declaro un nuevo buffer de lectura
             BufferedReader br;
+            BufferedReader brcoop;
             try
                 {
                     if(fAntiguo.exists())
@@ -75,6 +77,19 @@ public class Empleado extends javax.swing.JFrame {
                                 
                             if(arrOfStr[0].equals(aCadena))
                                {          
+                                   
+                                   brcoop = new BufferedReader(new FileReader(fAntiguoCoop));
+
+                                        String lineacoop;
+                                        while ((lineacoop = brcoop.readLine()) != null) {
+                                           String[] arrOfStrCoop = lineacoop.split(",");
+
+                                            if (arrOfStrCoop[0].equals(arrOfStr[0])) {
+                                                
+                                                descCoop.setText(arrOfStrCoop[1]);
+                                            }
+                                        }
+                                        
                                    idemp.setText(arrOfStr[0]);
                                    nom.setText(arrOfStr[1]);
                                    ape.setText(arrOfStr[2]);
@@ -103,27 +118,29 @@ public class Empleado extends javax.swing.JFrame {
                         System.out.println(e);
                     }
             return "not found";
+              
         }
     
     void validar(){ 
-        double dc = Double.parseDouble(descCoop.getText());
-        
         
        if(idemp.getText().equals("")){
              JOptionPane.showMessageDialog(idemp, "Por favor introduzca el id del empleado", "Advertencia", 
                                             JOptionPane.WARNING_MESSAGE);
              
              idemp.requestFocus();
+              skip = true;
         }
           else if(nom.getText().equals("")){
              JOptionPane.showMessageDialog(nom, "Por favor introduzca el nombre del empleado", "Advertencia", 
                                             JOptionPane.WARNING_MESSAGE);
              nom.requestFocus();
+              skip = true;
         }
         else if(ape.getText().equals("")){
              JOptionPane.showMessageDialog(ape, "Por favor introduzca el apellido del empleado", "Advertencia", 
                                             JOptionPane.WARNING_MESSAGE);
              ape.requestFocus();
+              skip = true;
         }
        
       
@@ -131,42 +148,58 @@ public class Empleado extends javax.swing.JFrame {
              JOptionPane.showMessageDialog(dir, "Por favor introduzca la direccion del empleado", "Advertencia", 
                                             JOptionPane.WARNING_MESSAGE);
              dir.requestFocus();
+              skip = true;
         }  
           
           else if(tef.getText().equals("")){
              JOptionPane.showMessageDialog(tef, "Por favor introduzca el telefono del empleado", "Advertencia", 
                                             JOptionPane.WARNING_MESSAGE);
              tef.requestFocus();
+              skip = true;
           }
              
         else if(iddpto.getText().equals("")){
              JOptionPane.showMessageDialog(iddpto, "Por favor introduzca el departamento al que pertenece el empleado", "Advertencia", 
                                             JOptionPane.WARNING_MESSAGE);
              iddpto.requestFocus();
+              skip = true;
         }
         
        else if(idpto.getText().equals("")){
              JOptionPane.showMessageDialog(idpto, "Por favor introduzca el puesto al que pertenece el empleado", "Advertencia", 
                                             JOptionPane.WARNING_MESSAGE);
              idpto.requestFocus();
+              skip = true;
+
         }
        
         else if(slrio.getText().equals("")){
              JOptionPane.showMessageDialog(slrio, "Por favor introduzca el salario del empleado", "Advertencia", 
                                             JOptionPane.WARNING_MESSAGE);
              slrio.requestFocus();
+             skip = true;
         }
-        else if(descCoop.getText().equals("") && coop.getSelectedItem().equals("Posee")){
-             JOptionPane.showMessageDialog(descCoop, "Por favor introduzca el porciento de descuento "
-                     + "para la cooperativa, debe ser menor a 5", "Advertencia", JOptionPane.WARNING_MESSAGE);
-             descCoop.requestFocus();
-        }
-        else if(descCoop.getText().equals("4")){
-             JOptionPane.showMessageDialog(descCoop, "Por favor introduzca el porciento de descuento "
-                     + "para la cooperativa, debe ser menor a 5", "Advertencia", JOptionPane.WARNING_MESSAGE);
-             descCoop.requestFocus();
+        else if(coop.getSelectedItem().equals("Posee")){
+                
+              if(descCoop.getText().equals("")){
+                    JOptionPane.showMessageDialog(descCoop, "Por favor introduzca el porciento de descuento "
+                             + "para la cooperativa, debe ser menor a 5", "Advertencia", JOptionPane.WARNING_MESSAGE);
+                     descCoop.requestFocus();
+                     skip = true;
+                }else if(Double.parseDouble(descCoop.getText()) > 5 || Double.parseDouble(descCoop.getText()) <= 0 ){
             
-        }
+                    JOptionPane.showMessageDialog(descCoop, "Por favor el porciento de descuento "
+                             + "para la cooperativa, debe ser menor a 5 y mayor a 0", "Advertencia", JOptionPane.WARNING_MESSAGE);
+                     descCoop.requestFocus();
+                     skip= true;
+                     
+                }else{
+                skip = false;
+                }
+                
+            }
+        else skip = false;
+       
         }
 
     @SuppressWarnings("unchecked")
@@ -207,7 +240,7 @@ public class Empleado extends javax.swing.JFrame {
         descCoop = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Empleados", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 3, 14))); // NOI18N
 
@@ -526,7 +559,7 @@ public class Empleado extends javax.swing.JFrame {
         /*VALIDACIONES*/
         validar();
          /*VALIDACIONES*/
-         
+         if(skip == false){
          //Asignacion de valores
          ide = Integer.parseInt(idemp.getText());
          nomb = nom.getText();
@@ -570,7 +603,7 @@ public class Empleado extends javax.swing.JFrame {
          JOptionPane.showMessageDialog(this, "Empleado registrado!", "Información", 
                                             JOptionPane.INFORMATION_MESSAGE);
          idemp.setText(metodos.nextId("empleados.txt")+"");
-       
+         }
     }//GEN-LAST:event_btn_guardarActionPerformed
 
     private void tefKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tefKeyTyped
@@ -591,14 +624,17 @@ public class Empleado extends javax.swing.JFrame {
                 +","+sex.getSelectedItem()+","+iddpto.getText()+","+fecha.getText()+","+idpto.getText()+","
                 +coop.getSelectedItem()+","+slrio.getText();
 
-        
+        String lineaNuevaCoop = idemp.getText()+","+descCoop.getText();
+                
         if(Buscar(iddpto.getText()).equals("not found")){
             JOptionPane.showMessageDialog(this, "Departamento inexistente!", "Advertencia",
                 JOptionPane.WARNING_MESSAGE);
             return;
         }
 
+        validar();
         metodos.Modificar("empleados", idemp.getText(), lineaNueva);
+        metodos.Modificar("cooperativa", idemp.getText(), lineaNuevaCoop);
 
         limpiar();
         idemp.setText(metodos.nextId("empleados.txt")+"");
@@ -638,6 +674,7 @@ public class Empleado extends javax.swing.JFrame {
             return;
         }
         a.Borracho("empleados", idemp.getText(), "");
+        a.Borracho("cooperativa", idemp.getText(), "");
 
         limpiar();
         JOptionPane.showMessageDialog(nom, "Empleado eliminado!", "Información",
@@ -712,7 +749,7 @@ public class Empleado extends javax.swing.JFrame {
     public static javax.swing.JButton btn_guardar;
     private javax.swing.JButton btn_modificar;
     private javax.swing.JButton btn_nuevo;
-    private javax.swing.JComboBox<String> coop;
+    public static javax.swing.JComboBox<String> coop;
     private javax.swing.JTextField descCoop;
     private javax.swing.JTextField dir;
     private javax.swing.JTextField fecha;
