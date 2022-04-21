@@ -47,6 +47,7 @@ public class NominaGen extends javax.swing.JFrame {
 
                 while ((linea = br.readLine()) != null) {
                     String[] arrOfStr = linea.split(",");
+                    String[] arrOfStrCoop= {"0"};
                     String lnueva;
                     String lantigua;
                     
@@ -61,18 +62,13 @@ public class NominaGen extends javax.swing.JFrame {
 
                                         String lineacoop;
                                         while ((lineacoop = brcoop.readLine()) != null) {
-                                            String[] arrOfStrCoop = lineacoop.split(",");
+                                            arrOfStrCoop = lineacoop.split(",");
 
                                             if (arrOfStrCoop[0].equals(arrOfStr[0])) {
                                                 desc_perc = Double.parseDouble(arrOfStrCoop[1]);
                                                 valcoop = sbruto * (desc_perc * 0.01);
                                                 acum_coop = Double.valueOf(arrOfStrCoop[2]) + valcoop;
-                                                System.out.println("cope: "+valcoop+" acum: "+ acum_coop);
-                                                lnueva = arrOfStr[0]+","+ arrOfStrCoop[1]+","+ acum_coop+"";
-                                                    
                                             }
-                                                lnueva = arrOfStr[0]+","+ arrOfStrCoop[1]+","+ acum_coop+"";
-                                                metodos.Modificar("cooperativa", arrOfStr[0],lnueva);
                                         }
                                     } catch (Exception e) {
                                         System.out.println(e);
@@ -82,6 +78,16 @@ public class NominaGen extends javax.swing.JFrame {
 
                                     desc_perc = 0;
                                 }
+                                
+                                lnueva = arrOfStr[0]+","+ desc_perc+","+ acum_coop+"";
+                                    metodos.Modificar("cooperativa", arrOfStr[0],lnueva);
+//                                
+//                                if(EstadoCoop = true) {
+//                                }else{
+//                                lnueva = arrOfStr[0]+","+ 0+","+ acum_coop+"";
+//                                    metodos.Modificar("cooperativa", arrOfStr[0],lnueva);
+//                                
+//                                }
 
 
                     vars = 0.0304 * sbruto;
