@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -11,6 +12,7 @@ import javax.swing.JOptionPane;
 public class NominaGen extends javax.swing.JFrame {
 
     archivos metodos = new archivos();
+    static DecimalFormat decimalFormat = new DecimalFormat("###,###.##");
 
     public NominaGen() {
 
@@ -30,6 +32,8 @@ public class NominaGen extends javax.swing.JFrame {
     public String Generador() {
         File fAntiguo = new File("empleados.txt");
         File fAntiguoCoop = new File("cooperativa.txt");
+        File fAntiguoPuesto = new File("Puestos.txt");
+        File fAntiguoDepto = new File("departamentos.txt");
         String numnomina = idnomina.getText();
         String fechanom = fecnomina.getText();
         boolean EstadoCoop = false;
@@ -38,6 +42,8 @@ public class NominaGen extends javax.swing.JFrame {
 
         BufferedReader br;
         BufferedReader brcoop;
+        BufferedReader brpuesto;
+        BufferedReader brdepto;
 
         try {
             if (fAntiguo.exists()) {
@@ -114,13 +120,59 @@ public class NominaGen extends javax.swing.JFrame {
 
                     sueldonetus = sbruto - vars - vafp - visr - valcoop;
 
+                    
+                    //Determinar puesto por ID
+                    brpuesto = new BufferedReader(new FileReader(fAntiguoPuesto));
+                    String [] arrOfStrPuesto;
+                    String Puestostr = null;
+                    
+
+                                        String lineapuesto;
+                                        while ((lineapuesto = brpuesto.readLine()) != null) {
+                                            arrOfStrPuesto = lineapuesto.split(",");
+
+                                            if (arrOfStrPuesto[0].equals(arrOfStr[8])) {
+                                                
+                                                Puestostr = arrOfStrPuesto[1];
+                                            }
+                                        }
+                                  
+                                    brpuesto.close();
+                    
+                    //Determinar departamento por ID
+                    brdepto = new BufferedReader(new FileReader(fAntiguoDepto));
+                    String [] arrOfStrDepto;
+                    String Departamentostr = null;
+                    
+                 
+
+                                        String lineadepto;
+                                        while ((lineadepto = brdepto.readLine()) != null) {
+                                            arrOfStrDepto = lineadepto.split(",");
+
+                                            if (arrOfStrDepto[0].equals(arrOfStr[6])) {
+                                                
+                                                Departamentostr = arrOfStrDepto[1];
+                                            }
+                                        }
+                                   
+                                    brpuesto.close();
+                                
+                
+                    
                     try {
                         //Crear archivo
 
                         metodos.GuardarDatos("nomina.txt", numnomina, arrOfStr[0], fechanom, sbruto
                                 + "", vafp + "", vars + "", valcoop + "", visr + "", sueldonetus + "", "true");
 
-                        // cuando se usa generador solo le genera nomina a 3/4 empleados
+                        Plantilla_Pdf pdf = new Plantilla_Pdf();
+                        pdf.Aplantillao("Panamasin Gas", arrOfStr[0], arrOfStr[1], arrOfStr[2], fechanom, 
+                                decimalFormat.format(sbruto), decimalFormat.format(vafp), decimalFormat.format(vars), decimalFormat.format(valcoop)
+                                , decimalFormat.format(visr), decimalFormat.format(sueldonetus), Departamentostr, Puestostr, desc_perc+"");
+                        // salario_bruto ,String AFP ,String ARS ,String Cooperativa, String ISR ,String Sueldo_neto, 
+//            String Departamento, String Puesto
+
                     } catch (IOException ex) {
                         Logger.getLogger(Usuario.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -132,8 +184,6 @@ public class NominaGen extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Nomina registrada!", "Información",
                         JOptionPane.INFORMATION_MESSAGE);
 
-                Plantilla_Pdf pdf = new Plantilla_Pdf();
-                pdf.Aplantillao();
             } else {
                 System.out.println("Fichero no Existe");
             }
@@ -168,6 +218,7 @@ public class NominaGen extends javax.swing.JFrame {
         fecnomina = new javax.swing.JFormattedTextField();
         jLabel11 = new javax.swing.JLabel();
         estado = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -231,6 +282,13 @@ public class NominaGen extends javax.swing.JFrame {
 
         estado.setText("Estado");
 
+        jButton1.setText("jButton1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -270,6 +328,10 @@ public class NominaGen extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(insertaNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGap(58, 58, 58))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(22, 22, 22))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -296,7 +358,8 @@ public class NominaGen extends javax.swing.JFrame {
                     .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
                     .addComponent(registrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(insertaNuevo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(59, 59, 59))
+                .addGap(37, 37, 37)
+                .addComponent(jButton1))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -366,6 +429,12 @@ public class NominaGen extends javax.swing.JFrame {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
     }//GEN-LAST:event_formWindowOpened
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+            Plantilla_Pdf pdf = new Plantilla_Pdf();
+            pdf.Aplantillao();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -407,6 +476,7 @@ public class NominaGen extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField fecnomina;
     private javax.swing.JTextField idnomina;
     private javax.swing.JButton insertaNuevo;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
