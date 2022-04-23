@@ -8,6 +8,8 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.text.DecimalFormat;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -286,6 +288,11 @@ void limpiar(){
         });
 
         revertir.setText("Revertir");
+        revertir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                revertirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -405,6 +412,50 @@ void limpiar(){
         JOptionPane.showMessageDialog(null,"Por favor, seleccione una fila");
     }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void revertirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_revertirActionPerformed
+            String ant = "0";
+        try {
+            // TODO add your handling code here:
+            String fecharevertir = fecha.getText();
+ 
+            
+            File fAntiguo = new File("nomina.txt");
+            BufferedReader brt;
+            
+            brt = new BufferedReader(new FileReader(fAntiguo));
+            String [] arrOfStr;
+            
+            String linea;
+            while ((linea = brt.readLine()) != null) {
+                arrOfStr = linea.split(",");
+                
+                if (arrOfStr[2].equals(fecharevertir)) {
+                    
+                      
+                        ant = arrOfStr[0];
+                    
+                }
+                
+            }
+            
+
+            
+            brt.close();
+        } catch (IOException ex) {
+            Logger.getLogger(NominaRevr.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        if(ant.equals("0")){
+        JOptionPane.showMessageDialog(fecha, "Fecha inexistente!", "Advertencia",
+                JOptionPane.WARNING_MESSAGE);
+        }else{
+            
+            a.Borracho("nomina", ant, "");
+        }
+            cargarUsers();
+
+    }//GEN-LAST:event_revertirActionPerformed
 
     
     public static void main(String args[]) {

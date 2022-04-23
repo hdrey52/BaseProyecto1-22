@@ -9,7 +9,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class conEmpleado extends javax.swing.JFrame {
-    int entrada = Menu.entrada;
+    int entrada = 2;
     
     /**
      * Creates new form conEmpleado
