@@ -66,7 +66,7 @@ void limpiar(){
                                         
                                         JOptionPane.showMessageDialog(psw,"Bienvenido Usuario", "Informacion", JOptionPane.INFORMATION_MESSAGE);   
 
-                                       entrada = 0;
+                                       entrada = 1;
                                     }
                                     
                                     limpiar();

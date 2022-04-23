@@ -76,16 +76,8 @@ public class conEmpleado extends javax.swing.JFrame {
     void enviardatosempleado(){
         int fila=empleados.getSelectedRow();
         if(fila>=0){
-             if(entrada == 0){
+             if(entrada == 2){
                   
-                 System.out.println("Un Usuario no modifica!!!");                   
-            }
-           /*  if (entrada == 1){
-                    Cooperativa.idemp.setText(empleados.getValueAt(fila,0).toString());
-                 //   Cooperativa.acum.setText(empleados.getValueAt(fila,10).toString());
-                   this.dispose(); 
-            }*/
-             else{
              new Empleado(empleados.getValueAt(fila,0).toString()).setVisible(true);
                    this.dispose();
                    Empleado.btn_guardar.setEnabled(false);

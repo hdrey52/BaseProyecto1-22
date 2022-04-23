@@ -14,6 +14,8 @@ import javax.swing.table.DefaultTableModel;
 
 public class conUsuario extends javax.swing.JFrame {
 
+        int entrada = Menu.entrada;
+
     /**
      * Creates new form conUsuario
      */
@@ -27,10 +29,11 @@ public class conUsuario extends javax.swing.JFrame {
 void enviardatosuser(){
         int fila=usuarios.getSelectedRow();
         if(fila>=0){
-            
+            if(entrada == 2){
                    new Usuario(usuarios.getValueAt(fila,0).toString()).setVisible(true);
                    Usuario.registrar.setEnabled(false);
-        }
+                }
+            }
     else{
         JOptionPane.showMessageDialog(null,"Por favor, seleccione una fila");
     }

@@ -39,7 +39,7 @@ void enviardatospto(){
                     
                    this.dispose();
             }
-            else{
+         else if ( entrada == 2) {
              new Puesto(Puestos.getValueAt(fila,0).toString()).setVisible(true);
                    this.dispose();
                    Puesto.btn_Guardar.setEnabled(false);
