@@ -9,8 +9,8 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class conEmpleado extends javax.swing.JFrame {
-    int entrada = 2;
-
+    int entrada = Menu.entrada;
+    
     /**
      * Creates new form conEmpleado
      */
@@ -78,8 +78,7 @@ public class conEmpleado extends javax.swing.JFrame {
         if(fila>=0){
              if(entrada == 0){
                   
-                   this.dispose();
-                   
+                 System.out.println("Un Usuario no modifica!!!");                   
             }
            /*  if (entrada == 1){
                     Cooperativa.idemp.setText(empleados.getValueAt(fila,0).toString());

@@ -14,6 +14,7 @@ import javax.swing.JOptionPane;
 
 public class Menu extends javax.swing.JFrame {
 
+    static int entrada;
     /**
      * Creates new form Menu
      */
@@ -25,7 +26,8 @@ public class Menu extends javax.swing.JFrame {
 void limpiar(){
         user.setText("");
         psw.setText("");
-}
+} 
+    
   public void Buscar(String user, String pass)
         {
             File fAntiguo= new File("usuarios.txt");
@@ -48,17 +50,23 @@ void limpiar(){
                                    br.close();    
                                
                                         
-                                    MenuBar.setVisible(true);
                                       Panel.setVisible(false);
 
                                     if(arrOfStr[5].equals("0")){
-                                           JOptionPane.showMessageDialog(psw,"Bienvenido administrador", "Informacion", 
+                                        MenuBar.setVisible(true);
+                                        JOptionPane.showMessageDialog(psw,"Bienvenido administrador", "Informacion", 
          JOptionPane.INFORMATION_MESSAGE);   
-                                        mant_usuario.setVisible(true);
+                                        mantenimientos.setVisible(true);
+                                        entrada = 2;
                                         }
-                                    else{   JOptionPane.showMessageDialog(psw,"Bienvenido Usuario", "Informacion", 
-         JOptionPane.INFORMATION_MESSAGE);   
-                                       mant_usuario.setVisible(false); 
+                                    else{   
+                                       Procesos.setVisible(false);
+                                       mant_usuario.setVisible(false);
+                                       MenuBar.setVisible(true);
+                                        
+                                        JOptionPane.showMessageDialog(psw,"Bienvenido Usuario", "Informacion", JOptionPane.INFORMATION_MESSAGE);   
+
+                                       entrada = 0;
                                     }
                                     
                                     limpiar();
@@ -98,12 +106,12 @@ void limpiar(){
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         MenuBar = new javax.swing.JMenuBar();
-        mant_usuario = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        mantenimientos = new javax.swing.JMenu();
+        mant_usuario = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
+        Procesos = new javax.swing.JMenu();
         jMenuItem5 = new javax.swing.JMenuItem();
         jMenuItem6 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
@@ -180,15 +188,15 @@ void limpiar(){
                 .addContainerGap())
         );
 
-        mant_usuario.setText("Mantenimiento");
+        mantenimientos.setText("Mantenimiento");
 
-        jMenuItem1.setText("Usuario");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        mant_usuario.setText("Usuario");
+        mant_usuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                mant_usuarioActionPerformed(evt);
             }
         });
-        mant_usuario.add(jMenuItem1);
+        mantenimientos.add(mant_usuario);
 
         jMenuItem2.setText("Departamento");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
@@ -196,7 +204,7 @@ void limpiar(){
                 jMenuItem2ActionPerformed(evt);
             }
         });
-        mant_usuario.add(jMenuItem2);
+        mantenimientos.add(jMenuItem2);
 
         jMenuItem3.setText("Puesto");
         jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
@@ -204,7 +212,7 @@ void limpiar(){
                 jMenuItem3ActionPerformed(evt);
             }
         });
-        mant_usuario.add(jMenuItem3);
+        mantenimientos.add(jMenuItem3);
 
         jMenuItem4.setText("Empleado");
         jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
@@ -212,11 +220,11 @@ void limpiar(){
                 jMenuItem4ActionPerformed(evt);
             }
         });
-        mant_usuario.add(jMenuItem4);
+        mantenimientos.add(jMenuItem4);
 
-        MenuBar.add(mant_usuario);
+        MenuBar.add(mantenimientos);
 
-        jMenu2.setText("Procesos");
+        Procesos.setText("Procesos");
 
         jMenuItem5.setText("Generar Nomina");
         jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
@@ -224,12 +232,12 @@ void limpiar(){
                 jMenuItem5ActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItem5);
+        Procesos.add(jMenuItem5);
 
         jMenuItem6.setText("Reversar Nomina");
-        jMenu2.add(jMenuItem6);
+        Procesos.add(jMenuItem6);
 
-        MenuBar.add(jMenu2);
+        MenuBar.add(Procesos);
 
         jMenu3.setText("Consulta");
 
@@ -344,10 +352,10 @@ void limpiar(){
      new Departamento().setVisible(true);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void mant_usuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mant_usuarioActionPerformed
     
         new Usuario().setVisible(true);
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_mant_usuarioActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
      new Empleado().setVisible(true);
@@ -417,14 +425,13 @@ void limpiar(){
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar MenuBar;
     private javax.swing.JPanel Panel;
+    private javax.swing.JMenu Procesos;
     private javax.swing.JToggleButton btn_Ingresar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem10;
     private javax.swing.JMenuItem jMenuItem11;
     private javax.swing.JMenuItem jMenuItem12;
@@ -437,7 +444,8 @@ void limpiar(){
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
-    private javax.swing.JMenu mant_usuario;
+    private javax.swing.JMenuItem mant_usuario;
+    private javax.swing.JMenu mantenimientos;
     private javax.swing.JPasswordField psw;
     private javax.swing.JTextField user;
     // End of variables declaration//GEN-END:variables
