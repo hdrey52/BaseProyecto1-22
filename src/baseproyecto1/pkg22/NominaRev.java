@@ -5,16 +5,21 @@
  */
 package baseproyecto1.pkg22;
 
+import static baseproyecto1.pkg22.conNominas.decimalFormat;
+import static baseproyecto1.pkg22.conNominas.nominas;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.text.DecimalFormat;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class NominaRev extends javax.swing.JFrame {
     archivos a = new archivos();
     archivos metodos = new archivos();
+    static DecimalFormat decimalFormat = new DecimalFormat("#.##");
+
     /**
      * Creates new form NominaRev
      */
@@ -24,10 +29,9 @@ public class NominaRev extends javax.swing.JFrame {
     }
     
     
-     public void Buscar(String filtro)
-        {
-            //TABLA
-           DefaultTableModel modelo = (DefaultTableModel) Nominas.getModel();
+     public void Buscar(String filtro, String id){
+      //TABLA
+           DefaultTableModel modelo = (DefaultTableModel) nominas.getModel();
             modelo.getDataVector().clear();
             
             String []reg = new String [10];
@@ -37,6 +41,12 @@ public class NominaRev extends javax.swing.JFrame {
             String aCadena=filtro;
             // Declaro un nuevo buffer de lectura
             BufferedReader br;
+            
+            int i = 0;
+            if(id.equals("idemp"))
+                i = 1;
+            else if(id.equals("fec"))
+                i = 2;
             try
                 {
                     if(fAntiguo.exists())
@@ -48,32 +58,32 @@ public class NominaRev extends javax.swing.JFrame {
                         while((linea=br.readLine()) != null)
                           {                            
                               String[] arrOfStr = linea.split(","); 
-                                
-                            if(arrOfStr[0].equals(aCadena))
-                               {                        
+                           
+                            if(arrOfStr[i].contains(aCadena))
+                               {           
                                    reg[0] = arrOfStr[0];
                                    reg[1] = arrOfStr[1];
                                    reg[2] = arrOfStr[2];
                                    reg[3] = arrOfStr[3];
-                                   reg[4] = arrOfStr[4];
-                                   reg[5] = arrOfStr[5];
-                                   reg[6] = arrOfStr[6];
-                                   reg[7] = arrOfStr[7];
-                                   reg[8] = arrOfStr[8];
+                                   reg[4] = decimalFormat.format(Double.valueOf(arrOfStr[4]));
+                                   reg[5] = decimalFormat.format(Double.valueOf(arrOfStr[5]));
+                                   reg[6] = decimalFormat.format(Double.valueOf(arrOfStr[6]));
+                                   reg[7] = decimalFormat.format(Double.valueOf(arrOfStr[7]));
+                                   reg[8] = decimalFormat.format(Double.valueOf(arrOfStr[8]));
                                    reg[9] = arrOfStr[9];
                                    
                                    modelo.addRow(reg);
-                                  Nominas.setModel(modelo);
-                                   br.close(); 
-                                    return;
+                                  nominas.setModel(modelo);
+                                   //br.close(); 
+                                    //return;
 
                                }
                             
                            } // fin while
                         // Cierro el buffer de lectura
                         br.close();
-                            modelo.addRow(reg);
-                                  Nominas.setModel(modelo);
+                           // modelo.addRow(reg);
+                              //    productos.setModel(modelo);
                     }
                     else
                     {
@@ -84,7 +94,7 @@ public class NominaRev extends javax.swing.JFrame {
                     {
                         System.out.println(e);
                     }
-        }
+  }
      
      public static void cargarUsers()
         {
@@ -167,6 +177,11 @@ public class NominaRev extends javax.swing.JFrame {
         });
 
         jButton1.setText("Revertir");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         Nominas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -258,7 +273,7 @@ public class NominaRev extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void idfiltroKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_idfiltroKeyReleased
-     Buscar(idfiltro.getText()); 
+     Buscar(idfiltro.getText(), "fec"); 
         if(idfiltro.getText().isEmpty())
             cargarUsers();
     }//GEN-LAST:event_idfiltroKeyReleased
@@ -298,6 +313,10 @@ public class NominaRev extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null,"Por favor, seleccione una fila");
     }
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
     
     /**
      * @param args the command line arguments

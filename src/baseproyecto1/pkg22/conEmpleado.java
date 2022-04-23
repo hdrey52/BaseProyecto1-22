@@ -43,7 +43,7 @@ public class conEmpleado extends javax.swing.JFrame {
     
     void elegir(){
      limpiar();
-     
+     cargarEmp();
       if(btn1.isSelected())
                idfiltro.setEnabled(true);
            else
@@ -365,7 +365,7 @@ public class conEmpleado extends javax.swing.JFrame {
         });
 
         try {
-            fing.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##-##-####")));
+            fing.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("2022/##/##")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }

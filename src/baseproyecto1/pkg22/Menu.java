@@ -370,7 +370,7 @@ void limpiar(){
     }//GEN-LAST:event_jMenuItem7ActionPerformed
 
     private void jMenuItem13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem13ActionPerformed
-    new conNomina().setVisible(true);
+    new conNominas().setVisible(true);
 
     }//GEN-LAST:event_jMenuItem13ActionPerformed
 
