@@ -1,4 +1,2 @@
 1,1,Juan,Perez,Profe@yimei.com,0
-Pdrote,Kilo,Pedrote,del Kilo,Kilo@outloo.com,1
-Raul,asd,asd,ads,adsa,1
-Josd,123,Jose,Diaz,dia@gmail.com,1
+2,2,Juan,Perez,Profe@gmail.com,1

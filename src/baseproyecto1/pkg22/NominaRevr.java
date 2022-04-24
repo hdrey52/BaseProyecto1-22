@@ -1,8 +1,6 @@
 
 package baseproyecto1.pkg22;
 
-import static baseproyecto1.pkg22.NominaRev.Nominas;
-import static baseproyecto1.pkg22.NominaRev.cargarUsers;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -63,7 +61,7 @@ void limpiar(){
                    
   public void Buscar(String filtro, String id){
       //TABLA
-           DefaultTableModel modelo = (DefaultTableModel) nominas.getModel();
+           DefaultTableModel modelo = (DefaultTableModel) Nominas.getModel();
             modelo.getDataVector().clear();
             
             String []reg = new String [10];
@@ -105,7 +103,7 @@ void limpiar(){
                                    reg[9] = arrOfStr[9];
                                    
                                    modelo.addRow(reg);
-                                  nominas.setModel(modelo);
+                                  Nominas.setModel(modelo);
                                    //br.close(); 
                                     //return;
 
@@ -114,8 +112,7 @@ void limpiar(){
                            } // fin while
                         // Cierro el buffer de lectura
                         br.close();
-                           // modelo.addRow(reg);
-                              //    productos.setModel(modelo);
+
                     }
                     else
                     {
@@ -140,7 +137,7 @@ void limpiar(){
  
         public void cargarUsers(){
     //TABLA
-           DefaultTableModel modelo = (DefaultTableModel) nominas.getModel();
+           DefaultTableModel modelo = (DefaultTableModel) Nominas.getModel();
             modelo.getDataVector().clear();
             
             String []reg = new String [10];
@@ -173,7 +170,7 @@ void limpiar(){
                                    reg[9] = arrOfStr[9];
                                    
                                    modelo.addRow(reg);
-                                  nominas.setModel(modelo);
+                                  Nominas.setModel(modelo);
                            } // fin while
                         // Cierro el buffer de lectura
                         br.close();
@@ -198,7 +195,7 @@ void limpiar(){
 
         buttonGroup1 = new javax.swing.ButtonGroup();
         jScrollPane1 = new javax.swing.JScrollPane();
-        nominas = new javax.swing.JTable();
+        Nominas = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         idfiltro = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
@@ -211,7 +208,7 @@ void limpiar(){
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        nominas.setModel(new javax.swing.table.DefaultTableModel(
+        Nominas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -219,12 +216,12 @@ void limpiar(){
                 "ID", "ID Empleado", "Fecha Nomina", "Sueldo Bruto", "AFP", "ARS", "Cooperativa", "ISR", "Sueldo Neto", "Estado"
             }
         ));
-        nominas.addMouseListener(new java.awt.event.MouseAdapter() {
+        Nominas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                nominasMouseClicked(evt);
+                NominasMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(nominas);
+        jScrollPane1.setViewportView(Nominas);
 
         jLabel1.setText("Id Empleado");
 
@@ -363,9 +360,9 @@ void limpiar(){
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void nominasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nominasMouseClicked
+    private void NominasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NominasMouseClicked
 
-    }//GEN-LAST:event_nominasMouseClicked
+    }//GEN-LAST:event_NominasMouseClicked
 
     private void idfiltroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idfiltroActionPerformed
         // TODO add your handling code here:
@@ -485,15 +482,15 @@ void limpiar(){
                       break;
                 
                     case "05":
-                      mesyano = "Mayo";// code
+                      mesyano = "Mayo";
                       break;
                 
                     case "06":
-                      mesyano = "Junio";// code
+                      mesyano = "Junio";
                       break;
                 
                     case "07":
-                      mesyano = "Julio";// code
+                      mesyano = "Julio";
                       break;
                 
                     case "08":
@@ -572,6 +569,7 @@ void limpiar(){
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public static javax.swing.JTable Nominas;
     private javax.swing.JRadioButton btn1;
     private javax.swing.JRadioButton btn2;
     private javax.swing.ButtonGroup buttonGroup1;
@@ -582,7 +580,6 @@ void limpiar(){
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    public static javax.swing.JTable nominas;
     private javax.swing.JButton revertir;
     // End of variables declaration//GEN-END:variables
 }

@@ -94,16 +94,13 @@ void limpiar(){
                                    
                                    modelo.addRow(reg);
                                   nominas.setModel(modelo);
-                                   //br.close(); 
-                                    //return;
-
+                                  
                                }
                             
                            } // fin while
                         // Cierro el buffer de lectura
                         br.close();
-                           // modelo.addRow(reg);
-                              //    productos.setModel(modelo);
+                           
                     }
                     else
                     {

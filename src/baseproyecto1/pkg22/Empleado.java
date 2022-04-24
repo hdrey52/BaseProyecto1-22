@@ -35,7 +35,7 @@ public class Empleado extends javax.swing.JFrame {
            public Empleado (String id){
         initComponents();
         idemp.setEnabled(false);
-        idpto.setEnabled(false);
+        iddpto.setEnabled(false);
         idpto.setEnabled(false);
         Buscar(id);
     }
@@ -50,7 +50,6 @@ public class Empleado extends javax.swing.JFrame {
         coop.setSelectedItem("True");
         idpto.setText("");
         iddpto.setText("");
-        //fecha.setText("");
         slrio.setText("");
         descCoop.setText("");
     }

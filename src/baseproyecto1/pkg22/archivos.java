@@ -1,10 +1,3 @@
-
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package baseproyecto1.pkg22;
 
 import java.io.BufferedReader;
@@ -16,10 +9,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author Locky
- */
+
 public class archivos {
     
        public int nextId(String archivo)
@@ -60,8 +50,7 @@ public class archivos {
         } // fin metodo BUSCAR
     
     public void GuardarDatos (String... args) throws IOException
-	{   //Primer parámetro Args[0] es el nombre del archivo, a partir de ahí son los campos que se
-            // quieren guardar en el archivo.
+	{   
             String linea = "";
             try
             {
@@ -75,7 +64,7 @@ public class archivos {
                          linea+= ",";
                     }
                 }                
-                System.out.println(linea);
+             
                 pw.println(linea);
 		pw.close();
             } catch  (IOException ex) {
@@ -83,7 +72,6 @@ public class archivos {
                 }
 	    
         } // fin metodo GuardarDatos
-     //public void Modificar(String codigo,String nombre, String edad)
     
     
    public void Modificar(String archivo, String LineaAntigua,String nuevalinea)
@@ -123,8 +111,6 @@ public class archivos {
 
                         // Capturo el nombre del fichero antiguo
                         String nAntiguo = fAntiguo.getName();
-                          System.out.println("einombre e' " + nAntiguo);
-                        // Borro el fichero antiguo
                         borrar(fAntiguo);
                         //Renombro el fichero auxiliar con el nombre del fichero antiguo
                         fNuevo.renameTo(fAntiguo);
@@ -161,8 +147,7 @@ public class archivos {
 
                         while((linea=br.readLine()) != null)
                           { 
-                              String[] arrOfStr = linea.split(","); 
-                            // if (!linea.isEmpty())   
+                              String[] arrOfStr = linea.split(",");   
                             if(arrOfStr[0].equals(aCadena))
                                {
                                   bw = new BufferedWriter(new FileWriter(fNuevo,true));
@@ -236,7 +221,6 @@ public class archivos {
                if(Ffichero.exists())
                  {
                     Ffichero.delete();
-                    System.out.println("Fichero "+ Ffichero.getName() +" fue Borrado");
                  }
 
             } // fin try

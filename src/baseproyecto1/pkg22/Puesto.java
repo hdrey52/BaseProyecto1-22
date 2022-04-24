@@ -12,10 +12,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author Ramon Dominguez
- */
 public class Puesto extends javax.swing.JFrame {
 archivos a = new archivos();
 

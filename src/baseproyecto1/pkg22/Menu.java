@@ -235,6 +235,11 @@ void limpiar(){
         Procesos.add(jMenuItem5);
 
         jMenuItem6.setText("Reversar Nomina");
+        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem6ActionPerformed(evt);
+            }
+        });
         Procesos.add(jMenuItem6);
 
         MenuBar.add(Procesos);
@@ -386,6 +391,10 @@ void limpiar(){
         // TODO add your handling code here:
         new NominaGen().setVisible(true);
     }//GEN-LAST:event_jMenuItem5ActionPerformed
+
+    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+       new NominaRevr().setVisible(true);
+    }//GEN-LAST:event_jMenuItem6ActionPerformed
 
     /**
      * @param args the command line arguments

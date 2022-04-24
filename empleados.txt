@@ -1,7 +1,2 @@
-1,Juan,Diaz,as.@gmail.com,809-547-8954,Masculino,3,2022/04/19,3,Posee,32000.0
-2,Juan,Diaz,as.@gmail.com,809-547-8954,Masculino,2,2022/04/19,3,Posee,32000.0
-3,Luz,Alba,Los Razmone,784-596-2256,Femenino,3,2022/04/19,3,Posee,10000.0
-4,Peter,Almenda,Los Prados,809-505-5014,Masculino,1,2022/04/20,3,No posee,15000.0
-5,Juan,Diaz,as.@gmail.com,809-547-8954,Masculino,3,2022/04/19,3,Posee,31000.0
-6,acdac,casca,asccas,111-111-1111,Femenino,3,2022/04/21,3,Posee,312313.0
-7,ada,dsad,dasd,888-888-8888,Masculino,3,2022/04/21,3,Posee,555555.0
+1,No,Te,Haga,809-544-8886,Masculino,1,2022/04/23,2,Posee,900000.0
+2,Raynick,Pajaro,SuCasa,809-241-4181,Masculino,1,2022/04/23,1,No posee,100000.0

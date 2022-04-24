@@ -10,16 +10,10 @@ import java.io.FileReader;
 import java.io.IOException;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author olive
- */
+
 public class Usuario extends javax.swing.JFrame {
     archivos a = new archivos();
 
-    /**
-     * Creates new form Usuario
-     */
     public Usuario() {
         initComponents();
     }
@@ -119,10 +113,7 @@ public class Usuario extends javax.swing.JFrame {
 
         }
  
- void norepetir_users(){
-     
-     
- }
+
 void limpiar(){
         log.setText("");
         pass.setText("");

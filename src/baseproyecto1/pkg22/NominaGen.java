@@ -165,8 +165,7 @@ public class NominaGen extends javax.swing.JFrame {
                         pdf.Aplantillao("Panamasin Gas", arrOfStr[0], arrOfStr[1], arrOfStr[2], fechanom,
                                 decimalFormat.format(sbruto), decimalFormat.format(vafp), decimalFormat.format(vars), decimalFormat.format(valcoop),
                                  decimalFormat.format(visr), decimalFormat.format(sueldonetus), Departamentostr, Puestostr, desc_perc + "");
-                        // salario_bruto ,String AFP ,String ARS ,String Cooperativa, String ISR ,String Sueldo_neto, 
-//            String Departamento, String Puesto
+                        
 
                     } catch (IOException ex) {
                         Logger.getLogger(Usuario.class.getName()).log(Level.SEVERE, null, ex);

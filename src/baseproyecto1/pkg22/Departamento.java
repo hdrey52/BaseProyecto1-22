@@ -59,7 +59,7 @@ archivos a = new archivos();
                     }
                     else
                     {
-                        System.out.println("Fichero no Existe");
+                     System.out.println("Fichero no Existe");
                     }
                 } // fin try
                 catch(IOException e)
@@ -100,7 +100,7 @@ archivos a = new archivos();
         btn_salir = new javax.swing.JButton();
         btn_consulta = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Departamentos", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 3, 14))); // NOI18N
 
@@ -268,9 +268,7 @@ archivos a = new archivos();
     }//GEN-LAST:event_btn_salirActionPerformed
 
     private void btn_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modificarActionPerformed
-             
-            
-
+         
         String lineaNueva = id.getText()+","+descripcion.getText();
         
        if(Buscar(id.getText()).equals("not found")){

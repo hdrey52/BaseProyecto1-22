@@ -10,10 +10,7 @@ import javax.swing.table.DefaultTableModel;
 
 public class conEmpleado extends javax.swing.JFrame {
     int entrada = 2;
-    
-    /**
-     * Creates new form conEmpleado
-     */
+
     public conEmpleado() {
         initComponents();
          cargarEmp();
@@ -82,10 +79,7 @@ public class conEmpleado extends javax.swing.JFrame {
                    this.dispose();
                    Empleado.btn_guardar.setEnabled(false);
              }
-            /*
-                   new Empleado(empleados.getValueAt(fila,0).toString()).setVisible(true);
-                   this.dispose();
-                   Departamento.btn_Guardar.setEnabled(false);*/
+           
     }
     else{
         JOptionPane.showMessageDialog(null,"Por favor, seleccione una fila");
@@ -146,15 +140,12 @@ public class conEmpleado extends javax.swing.JFrame {
                                    
                                    modelo.addRow(reg);
                                   empleados.setModel(modelo);
-                                 //  br.close();
-                                  // return;
                                }
                             
                            } // fin while
                         // Cierro el buffer de lectura
                         br.close();
-                         //modelo.addRow(reg);
-                         //facturas.setModel(modelo);
+                         
                     }
                     else
                     {

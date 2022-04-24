@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package baseproyecto1.pkg22;
 
 import java.io.BufferedReader;
@@ -12,15 +8,10 @@ import java.io.IOException;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author Ramon Dominguez
- */
+
 public class conDepartamento extends javax.swing.JFrame {
 int entrada = 2;
-    /**
-     * Creates new form conDepartamento
-     */
+
     public conDepartamento() {
         initComponents();
         
@@ -48,8 +39,6 @@ int entrada = 2;
                    Departamento.btn_Guardar.setEnabled(false);
              }
             
-                  /* new Departamento(Departamentos.getValueAt(fila,0).toString()).setVisible(true);
-                   this.dispose();*/
     }
     else{
         JOptionPane.showMessageDialog(null,"Por favor, seleccione una fila");
