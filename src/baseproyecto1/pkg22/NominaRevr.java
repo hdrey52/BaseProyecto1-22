@@ -127,7 +127,18 @@ void limpiar(){
                         System.out.println(e);
                     }
   }
-  public void cargarUsers(){
+  
+        void deleteDir(File file) {
+          File[] contents = file.listFiles();
+          if (contents != null) {
+              for (File f : contents) {
+                  deleteDir(f);
+              }
+          }
+          file.delete();
+      }
+ 
+        public void cargarUsers(){
     //TABLA
            DefaultTableModel modelo = (DefaultTableModel) nominas.getModel();
             modelo.getDataVector().clear();
@@ -415,6 +426,7 @@ void limpiar(){
 
     private void revertirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_revertirActionPerformed
             String ant = "0";
+            String fechas= "";
         try {
             // TODO add your handling code here:
             String fecharevertir = fecha.getText();
@@ -434,7 +446,7 @@ void limpiar(){
                     
                       
                         ant = arrOfStr[0];
-                    
+                        fechas = arrOfStr[2];
                 }
                 
             }
@@ -450,8 +462,70 @@ void limpiar(){
         JOptionPane.showMessageDialog(fecha, "Fecha inexistente!", "Advertencia",
                 JOptionPane.WARNING_MESSAGE);
         }else{
+            String [] fecha_limpia;
             
+                fecha_limpia = fechas.split("/");
+                String mesyano = null;
+                switch (fecha_limpia[1]) {
+
+                    case "01":
+                      mesyano = "Enero";
+                      break;
+
+                    case "02":
+                      mesyano = "Febrero";
+                      break;
+                
+                    case "03":
+                      mesyano = "Marzo";
+                      break;
+                
+                    case "04":
+                      mesyano = "Abril";
+                      break;
+                
+                    case "05":
+                      mesyano = "Mayo";// code
+                      break;
+                
+                    case "06":
+                      mesyano = "Junio";// code
+                      break;
+                
+                    case "07":
+                      mesyano = "Julio";// code
+                      break;
+                
+                    case "08":
+                      mesyano = "Agosto";
+                      break;
+                
+                    case "09":
+                      mesyano = "Septiembre";
+                      break;
+                
+                    case "10":
+                      mesyano = "Octubre";
+                      break;
+                
+                    case "11":
+                      mesyano = "Noviembre";
+                      break;
+                
+                    case "12":
+                      mesyano = "Diciembre";
+                      break;
+                }
+                      
+                      mesyano= mesyano+"_"+fecha_limpia[2];
+                      
+            String filepath = "Nominas_"+mesyano+"";
+            File file = new File(filepath);
+            deleteDir(file);
             a.Borracho("nomina", ant, "");
+            
+            JOptionPane.showMessageDialog(rootPane, "Nomina reversada exitosamente!");
+            
         }
             cargarUsers();
 

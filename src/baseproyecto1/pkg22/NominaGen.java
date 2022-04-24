@@ -12,6 +12,7 @@ import javax.swing.JOptionPane;
 public class NominaGen extends javax.swing.JFrame {
 
     archivos metodos = new archivos();
+    boolean skip = false;
     static DecimalFormat decimalFormat = new DecimalFormat("###,###.##");
 
     public NominaGen() {
@@ -53,40 +54,40 @@ public class NominaGen extends javax.swing.JFrame {
 
                 while ((linea = br.readLine()) != null) {
                     String[] arrOfStr = linea.split(",");
-                    String[] arrOfStrCoop= {"0"};
+                    String[] arrOfStrCoop = {"0"};
                     String lnueva;
                     String lantigua;
-                    
+
                     double sbruto = (Double.parseDouble(arrOfStr[10]));
                     double vars = 0, vafp = 0, visr = 0, valcoop = 0, sueldonetus = 0, excedente;
-                    double acum_coop =0;
+                    double acum_coop = 0;
                     EstadoCoop = "Posee".equals(arrOfStr[9]);
                     //para obtener el valor descuento de la cooperativa
-                                if (EstadoCoop == true) {
-                                    brcoop = new BufferedReader(new FileReader(fAntiguoCoop));
-                                    try {
+                    if (EstadoCoop == true) {
+                        brcoop = new BufferedReader(new FileReader(fAntiguoCoop));
+                        try {
 
-                                        String lineacoop;
-                                        while ((lineacoop = brcoop.readLine()) != null) {
-                                            arrOfStrCoop = lineacoop.split(",");
+                            String lineacoop;
+                            while ((lineacoop = brcoop.readLine()) != null) {
+                                arrOfStrCoop = lineacoop.split(",");
 
-                                            if (arrOfStrCoop[0].equals(arrOfStr[0])) {
-                                                desc_perc = Double.parseDouble(arrOfStrCoop[1]);
-                                                valcoop = sbruto * (desc_perc * 0.01);
-                                                acum_coop = Double.valueOf(arrOfStrCoop[2]) + valcoop;
-                                            }
-                                        }
-                                    } catch (Exception e) {
-                                        System.out.println(e);
-                                    }
-                                    brcoop.close();
-                                } else {
-
-                                    desc_perc = 0;
+                                if (arrOfStrCoop[0].equals(arrOfStr[0])) {
+                                    desc_perc = Double.parseDouble(arrOfStrCoop[1]);
+                                    valcoop = sbruto * (desc_perc * 0.01);
+                                    acum_coop = Double.valueOf(arrOfStrCoop[2]) + valcoop;
                                 }
-                                
-                                lnueva = arrOfStr[0]+","+ desc_perc+","+ acum_coop+"";
-                                    metodos.Modificar("cooperativa", arrOfStr[0],lnueva);
+                            }
+                        } catch (Exception e) {
+                            System.out.println(e);
+                        }
+                        brcoop.close();
+                    } else {
+
+                        desc_perc = 0;
+                    }
+
+                    lnueva = arrOfStr[0] + "," + desc_perc + "," + acum_coop + "";
+                    metodos.Modificar("cooperativa", arrOfStr[0], lnueva);
 //                                
 
                     vars = 0.0304 * sbruto;
@@ -94,7 +95,7 @@ public class NominaGen extends javax.swing.JFrame {
 
                     //valor cooperativa ==
                     if (EstadoCoop == true) {
-                        
+
                     }
 
                     //PARA OBTENER EL VALOR DE ISR
@@ -120,46 +121,40 @@ public class NominaGen extends javax.swing.JFrame {
 
                     sueldonetus = sbruto - vars - vafp - visr - valcoop;
 
-                    
                     //Determinar puesto por ID
                     brpuesto = new BufferedReader(new FileReader(fAntiguoPuesto));
-                    String [] arrOfStrPuesto;
+                    String[] arrOfStrPuesto;
                     String Puestostr = null;
-                    
 
-                                        String lineapuesto;
-                                        while ((lineapuesto = brpuesto.readLine()) != null) {
-                                            arrOfStrPuesto = lineapuesto.split(",");
+                    String lineapuesto;
+                    while ((lineapuesto = brpuesto.readLine()) != null) {
+                        arrOfStrPuesto = lineapuesto.split(",");
 
-                                            if (arrOfStrPuesto[0].equals(arrOfStr[8])) {
-                                                
-                                                Puestostr = arrOfStrPuesto[1];
-                                            }
-                                        }
-                                  
-                                    brpuesto.close();
-                    
+                        if (arrOfStrPuesto[0].equals(arrOfStr[8])) {
+
+                            Puestostr = arrOfStrPuesto[1];
+                        }
+                    }
+
+                    brpuesto.close();
+
                     //Determinar departamento por ID
                     brdepto = new BufferedReader(new FileReader(fAntiguoDepto));
-                    String [] arrOfStrDepto;
+                    String[] arrOfStrDepto;
                     String Departamentostr = null;
-                    
-                 
 
-                                        String lineadepto;
-                                        while ((lineadepto = brdepto.readLine()) != null) {
-                                            arrOfStrDepto = lineadepto.split(",");
+                    String lineadepto;
+                    while ((lineadepto = brdepto.readLine()) != null) {
+                        arrOfStrDepto = lineadepto.split(",");
 
-                                            if (arrOfStrDepto[0].equals(arrOfStr[6])) {
-                                                
-                                                Departamentostr = arrOfStrDepto[1];
-                                            }
-                                        }
-                                   
-                                    brpuesto.close();
-                                
-                
-                    
+                        if (arrOfStrDepto[0].equals(arrOfStr[6])) {
+
+                            Departamentostr = arrOfStrDepto[1];
+                        }
+                    }
+
+                    brpuesto.close();
+
                     try {
                         //Crear archivo
 
@@ -167,9 +162,9 @@ public class NominaGen extends javax.swing.JFrame {
                                 + "", vafp + "", vars + "", valcoop + "", visr + "", sueldonetus + "", "true");
 
                         Plantilla_Pdf pdf = new Plantilla_Pdf();
-                        pdf.Aplantillao("Panamasin Gas", arrOfStr[0], arrOfStr[1], arrOfStr[2], fechanom, 
-                                decimalFormat.format(sbruto), decimalFormat.format(vafp), decimalFormat.format(vars), decimalFormat.format(valcoop)
-                                , decimalFormat.format(visr), decimalFormat.format(sueldonetus), Departamentostr, Puestostr, desc_perc+"");
+                        pdf.Aplantillao("Panamasin Gas", arrOfStr[0], arrOfStr[1], arrOfStr[2], fechanom,
+                                decimalFormat.format(sbruto), decimalFormat.format(vafp), decimalFormat.format(vars), decimalFormat.format(valcoop),
+                                 decimalFormat.format(visr), decimalFormat.format(sueldonetus), Departamentostr, Puestostr, desc_perc + "");
                         // salario_bruto ,String AFP ,String ARS ,String Cooperativa, String ISR ,String Sueldo_neto, 
 //            String Departamento, String Puesto
 
@@ -194,11 +189,79 @@ public class NominaGen extends javax.swing.JFrame {
         return "";
     } // fin metodo BUSCAR
 
+    public String fecharep() {
+        String ant = "0";
+
+        try {
+            // TODO add your handling code here:
+            String fecha = fecnomina.getText();
+
+            File fAntiguo = new File("nomina.txt");
+            BufferedReader brt;
+
+            brt = new BufferedReader(new FileReader(fAntiguo));
+            String[] arrOfStr;
+
+            String linea;
+            while ((linea = brt.readLine()) != null) {
+                arrOfStr = linea.split(",");
+
+                if (arrOfStr[2].equals(fecha)) {
+
+                    return "found";
+
+                }
+
+            }
+
+            brt.close();
+        } catch (IOException ex) {
+            Logger.getLogger(NominaRevr.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return "Not found";
+
+    }
+
     void validar() {
+        String [] fecha_partes;
+        
+        
+                
         if (fecnomina.getText().equals("")) {
             JOptionPane.showMessageDialog(fecnomina, "Por favor introduzca la fecha de la nomina", "Advertencia",
                     JOptionPane.WARNING_MESSAGE);
             fecnomina.requestFocus();
+            skip = true;
+        }else{
+        skip = false;
+        }
+        fecha_partes = fecnomina.getText().split("/");
+        if (Integer.parseInt(fecha_partes[1]) > 12 || Integer.parseInt(fecha_partes[1]) < 0){
+            JOptionPane.showMessageDialog(fecnomina, "No hay un mes mayor a 12 ni menor a 01, digitelo de nuevo", "Advertencia",
+                    JOptionPane.WARNING_MESSAGE);
+            fecnomina.requestFocus();
+            skip = true;
+        }else if (Integer.parseInt(fecha_partes[2]) > 3000 || Integer.parseInt(fecha_partes[2]) < 1800){
+            JOptionPane.showMessageDialog(fecnomina, "Parece que hay un error con el año, por favor digíte una fecha real.", "Advertencia",
+                    JOptionPane.WARNING_MESSAGE);
+            fecnomina.requestFocus();
+            
+            skip = true;
+        }else if ((fecha_partes[2]).length() < 4 || (fecha_partes[1]).length() < 2){
+            JOptionPane.showMessageDialog(fecnomina, "Parece que falta un digito, favor escribir de la forma DD/MM/AAAA. Ej: 30/01/2022", "Advertencia",
+                    JOptionPane.WARNING_MESSAGE);
+            fecnomina.requestFocus();
+            skip = true;
+            
+            
+        }else if (fecharep().equals("found")) {
+            JOptionPane.showMessageDialog(fecnomina, "Esta fecha ya esta en uso, intente de nuevo!", "Advertencia",
+                    JOptionPane.WARNING_MESSAGE);
+            
+            skip = true;
+        }else{
+            skip = false;
+        
         }
     }
 
@@ -218,7 +281,6 @@ public class NominaGen extends javax.swing.JFrame {
         fecnomina = new javax.swing.JFormattedTextField();
         jLabel11 = new javax.swing.JLabel();
         estado = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -282,13 +344,6 @@ public class NominaGen extends javax.swing.JFrame {
 
         estado.setText("Estado");
 
-        jButton1.setText("jButton1");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -328,10 +383,6 @@ public class NominaGen extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(insertaNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGap(58, 58, 58))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(22, 22, 22))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -358,8 +409,7 @@ public class NominaGen extends javax.swing.JFrame {
                     .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
                     .addComponent(registrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(insertaNuevo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(37, 37, 37)
-                .addComponent(jButton1))
+                .addGap(59, 59, 59))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -389,15 +439,18 @@ public class NominaGen extends javax.swing.JFrame {
     private void registrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarActionPerformed
 
         validar();
-        Generador();
-        /*VALIDACIONES*/
+        
+        if(skip == false){
+            Generador();
+            /*VALIDACIONES*/
 
-        limpiar();
-        idnomina.setText(metodos.nextId("nomina.txt") + "");
+            limpiar();
+            idnomina.setText(metodos.nextId("nomina.txt") + "");
 
+        
         estado.setText("Creando...");
         // TODO add your handling code here:
-
+        }
     }//GEN-LAST:event_registrarActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -428,12 +481,6 @@ public class NominaGen extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
     }//GEN-LAST:event_formWindowOpened
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-            Plantilla_Pdf pdf = new Plantilla_Pdf();
-            pdf.Aplantillao();
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -476,7 +523,6 @@ public class NominaGen extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField fecnomina;
     private javax.swing.JTextField idnomina;
     private javax.swing.JButton insertaNuevo;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
